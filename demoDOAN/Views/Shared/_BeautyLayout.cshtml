@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/favicons/favicon.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+    <link href="~/Content/StyleSheet.css" rel="stylesheet"/>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="navbar-left">
+                <ul class="navbar-left_items">
+                    <li class="navbar-left_item">
+                        @Html.ActionLink("Trang chủ", "Trangchu", "Trangchu", new { area = "" }, new { @class = "text-none" })
+                    </li>
+                    <li class="navbar-left_item">
+                        @Html.ActionLink("Sản phẩm", "Sanpham", "Sanpham", new { area = "" }, new { @class = "text-none" })
+                    </li>
+                    <li class="navbar-left_item">
+                        @Html.ActionLink("Thương hiệu", "Thuonghieu", "Thuonghieu", new { area = "" }, new { @class = "text-none" })
+                    </li>
+                </ul>
+            </div>
+            <div class="navbar-center">
+                <img src="~/image/logo-top.png" />
+            </div>
+            <div class="navbar-right">
+                <ul class="navbar-right_items">
+                    <li class="navbar-right_item"><i class="fa-solid fa-magnifying-glass"></i></li>
+                    <li class="navbar-right_item"><i class="fa-solid fa-user"></i></li>
+                    <li class="navbar-right_item"><i class="fa-solid fa-cart-shopping"></i></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <div style="">
+        @RenderBody()
+    </div>
+
+    <div class="container">
+        <footer class="footer container">
+            <div class="footer-left">
+                <img src="~/image/footer-image.jpg" class="footer-left_img" />
+            </div>
+            <div class="footer-right">
+                <div class="footer-right_top">
+                    <div class="footer-right_content col">
+                        <p class="item-box_text">Đặt hàng & Hỗ trợ</p>
+                        <p class="footer-text_sub">Hỏi đáp</p>
+                        <p class="footer-text_sub">Hướng dẫn mua hàng</p>
+                        <p class="footer-text_sub">Chính sách bán hàng</p>
+                        <p class="footer-text_sub">Điều khoản bảo mật</p>
+                        <p class="footer-text_sub">Liên hệ chúng tôi</p>
+                    </div>
+                    <div class="footer-right_content col">
+                        <p class="item-box_text">Về Melixier</p>
+                        <p class="footer-text_sub">Sản phẩm</p>
+                        <p class="footer-text_sub">Chăm sóc da</p>
+                        <p class="footer-text_sub">Dưỡng môi</p>
+                        <p class="footer-text_sub">Combo / Bộ sản phẩm</p>
+                    </div>
+                    <div class="footer-right_content col">
+                        <p class="item-box_text">Mạng xã hội</p>
+                        <div class="footer-text_contact">
+                            <p class="">Facebook</p>
+                            <i class="fa-solid fa-arrow-right icon"></i>
+                        </div>
+                        <div class="footer-text_contact">
+                            <p class="">Instagram</p>
+                            <i class="fa-solid fa-arrow-right icon"></i>
+                        </div>
+                        <div class="footer-text_contact">
+                            <p class="">TikTok</p>
+                            <i class="fa-solid fa-arrow-right icon"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-right_bottom">
+                    <div class="footer-right_bottom-70">
+                        <p class="footer-text">Melixier - CHẤT LƯỢNG THẬT - GIÁ TRỊ THẬT</p>
+                        <p class="footer-text_sub">
+                            Melixier là hệ thống cửa hàng mỹ phẩm chính hãng và dịch vụ chăm sóc sắc đẹp chuyên sâu với hệ thống cửa hàng
+                            trải dài trên toàn quốc với hàng loạt thương hiệu thuần chay.
+                        </p>
+                        <p class="footer-text_sub">
+                            Với phương châm "Chất lượng thật - Giá trị thật”, Melixier luôn nỗ lực không ngừng nhằm nâng cao chất
+                            lượng sản phẩm & dịch vụ để khách hàng có được những trải nghiệm mua sắm tốt nhất. Toàn bộ sản phẩm có ở
+                            Melixier đều được cam kết 100% chính hãng, đảm bảo nguồn gốc xuất xứ. Ngoài ra, Melixier và
+                            nhãn hàng cam kết bảo vệ hai lớp với mức đền bù 200% nếu phát hiện hàng giả, trong đó 100% từ Melixier và
+                            100% từ nhà phân phối.
+                        </p>
+                    </div>
+                    <div class="footer-right_bottom-30">
+                        <p class="footer-text">Đã chứng nhận</p>
+                        <img src="~/image/bocongthuong_small.png" />
+                        <p class="footer-text">Bản quyền &copy; 2016 Melixier</p>
+                        <p class="footer-text_sub">Công Ty cổ phần Melixier </p>
+                        <p class="footer-text_sub">
+                            Giấy chứng nhận Đăng ký Kinh doanh số 0313612829 do Sở Kế hoạch
+                            và Đầu tư Thành phố Hồ Chí Minh cấp ngày 13/01/2016
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </footer>
+
+    </div>
+
+</body>
+</html>
