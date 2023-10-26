@@ -10,12 +10,16 @@ namespace demoDOAN.Controllers
 {
     public class CategoriesController : Controller
     {
-        in4productEntities database = new in4productEntities();
+        DSSPhamEntities1 database = new DSSPhamEntities1();
         // GET: Categories
-        public ActionResult Sanpham()
+        
+        public ActionResult DanhMuc()
         {
             var categories = database.Categories.ToList();
             return View(categories);
         }
+        
+       
+        
     }
 }

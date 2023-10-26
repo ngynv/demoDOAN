@@ -4,10 +4,17 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="14b6d7fc798c4268a6ffac34b6844ecb" Name="Diagram1">
-        <EntityTypeShape EntityType="in4productModel.Category" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="in4productModel.Product" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <AssociationConnector Association="in4productModel.FK_Pro_Category" ManuallyRouted="false" />
+      <Diagram DiagramId="9d18c66458c04569ac1f3449a32e0a98" Name="Diagram1">
+        <EntityTypeShape EntityType="DSSPhamModel.AdminUser" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DSSPhamModel.Category" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DSSPhamModel.Customer" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DSSPhamModel.OrderDetail" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DSSPhamModel.OrderPro" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DSSPhamModel.Product" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="DSSPhamModel.FK_Pro_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="DSSPhamModel.FK__OrderPro__IDCus__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="DSSPhamModel.FK__OrderDeta__IDOrd__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="DSSPhamModel.FK__OrderDeta__IDPro__4316F928" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

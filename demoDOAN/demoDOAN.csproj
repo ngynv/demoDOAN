@@ -130,13 +130,23 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\DangnhapController.cs" />
+    <Compile Include="Controllers\DathangController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SanphamController.cs" />
+    <Compile Include="Controllers\ThanhtoanController.cs" />
     <Compile Include="Controllers\ThuonghieuController.cs" />
     <Compile Include="Controllers\TrangchuController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AdminUser.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Category.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Customer.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Model1.Context.cs">
@@ -153,6 +163,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OrderDetail.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OrderPro.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Product.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -177,6 +193,7 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\image.css" />
+    <Content Include="Content\Resposive.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\StyleIndex.css" />
     <Content Include="favicon.ico" />
@@ -189,6 +206,29 @@
     <Content Include="image\orgin2.png" />
     <Content Include="image\orgin3.png" />
     <Content Include="image\orgin4.png" />
+    <Content Include="image\Sanpham\botmatna.jpg" />
+    <Content Include="image\Sanpham\Bun.jpg" />
+    <Content Include="image\Sanpham\dauduong.jpg" />
+    <Content Include="image\Sanpham\Dauduongphuchoi.jpg" />
+    <Content Include="image\Sanpham\dautaytrang.jpg" />
+    <Content Include="image\Sanpham\DuongDa.jpg" />
+    <Content Include="image\Sanpham\duongmoi.jpg" />
+    <Content Include="image\Sanpham\gelruamat.jpg" />
+    <Content Include="image\Sanpham\kcn.jpg" />
+    <Content Include="image\Sanpham\kcn1.jpg" />
+    <Content Include="image\Sanpham\kcn2.jpg" />
+    <Content Include="image\Sanpham\kemduong.jpg" />
+    <Content Include="image\Sanpham\Lotion.jpg" />
+    <Content Include="image\Sanpham\matnadua.jpg" />
+    <Content Include="image\Sanpham\matnadua1.jpg" />
+    <Content Include="image\Sanpham\ntt.jpg" />
+    <Content Include="image\Sanpham\nuoctaytrang.jpg" />
+    <Content Include="image\Sanpham\son.jpg" />
+    <Content Include="image\Sanpham\srmm.jpg" />
+    <Content Include="image\Sanpham\Suaruamat.jpg" />
+    <Content Include="image\Sanpham\toner.jpg" />
+    <Content Include="image\Sanpham\toneraromatica.jpg" />
+    <Content Include="image\Sanpham\tonerrauma.jpg" />
     <Content Include="image\Thuonghieu\thuonghieu1.jpg" />
     <Content Include="image\Thuonghieu\thuonghieu2.jpg" />
     <Content Include="image\Thuonghieu\thuonghieu3.jpg" />
@@ -208,13 +248,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
-    </Content>
-    <EntityDeploy Include="Models\Model1.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -244,6 +277,13 @@
     <Content Include="Content\bootstrap-grid.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -275,11 +315,17 @@
     <Content Include="Views\Shared\_BeautyLayout.cshtml" />
     <Content Include="Views\Thuonghieu\Thuonghieu.cshtml" />
     <Content Include="Views\Trangchu\Trangchu.cshtml" />
-    <Content Include="Views\Categories\Sanpham.cshtml" />
+    <Content Include="Views\Sanpham\Sanpham.cshtml" />
+    <Content Include="Views\Dangnhap\Index.cshtml" />
+    <Content Include="Views\Dangnhap\RegisterUser.cshtml" />
+    <Content Include="Views\Sanpham\Timkiem.cshtml" />
+    <Content Include="Views\Categories\DanhMuc.cshtml" />
+    <Content Include="Views\Categories\Timkiem.cshtml" />
+    <Content Include="Views\Thanhtoan\Thanhtoan.cshtml" />
+    <Content Include="Views\Dathang\Dathang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Sanpham\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

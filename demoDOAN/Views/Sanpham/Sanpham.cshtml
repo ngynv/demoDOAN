@@ -1,0 +1,29 @@
+﻿@model IEnumerable<demoDOAN.Models.Product>
+
+@{
+    ViewBag.Title = "Sanpham";
+    Layout = "~/Views/Shared/_BeautyLayout.cshtml";
+    <link href="~/Content/StyleSheet.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/Resposive.css" rel="stylesheet" />
+}
+
+<div class="container listProduct">
+    <div class=" row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 col-lg-3 itemProduct">
+                <div class="itemProduct-top">
+                    <img src="~/image/Sanpham/@item.ImagePro" class="itemProduct-top_img" />
+                </div>
+                <div class="itemProduct-bot">
+                    <p class="itemProduct-bot_name">@item.NamePro</p>
+                    <p class="itemProduct-bot_price"> @item.Price <sub><ins>đ</ins></sub></p>
+                    <p class="itemProduct-bot_dec"> @item.DecriptionPro</p>
+                </div>
+            </div>
+        }
+    </div>
+
+</div>
+

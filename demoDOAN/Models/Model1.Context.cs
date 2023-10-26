@@ -13,10 +13,10 @@ namespace demoDOAN.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class in4productEntities : DbContext
+    public partial class DSSPhamEntities1 : DbContext
     {
-        public in4productEntities()
-            : base("name=in4productEntities")
+        public DSSPhamEntities1()
+            : base("name=DSSPhamEntities1")
         {
         }
     
@@ -25,7 +25,11 @@ namespace demoDOAN.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<AdminUser> AdminUsers { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<OrderDetail> OrderDetails { get; set; }
+        public virtual DbSet<OrderPro> OrderProes { get; set; }
         public virtual DbSet<Product> Products { get; set; }
     }
 }
