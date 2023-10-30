@@ -1,38 +1,62 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/mystyle.css" />
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
-        <div class="container">
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                </ul>
+    <div id="div-top">
+        <!-- Grey with black text -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="~/Categories">
+                        PRODUCT
+                        STORE
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="~/Products">
+                        ADMIN
+                        PRODUCT
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">CONTACT</a>
+                </li>
+            </ul>
+            <div class="ms-auto">
+                @Html.Action("CartPartial", "Cart")
             </div>
-        </div>
-    </nav>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+        </nav>
     </div>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    <br />
+    <div id="div-main">
+        <div id="div-left">
+            <h3>Danh mục sản phẩm</h3>
+            <ul style="list-style: none">
+                <li>
+                    <a href="TrangChu">Trang chủ</a>
+                </li>
+                <li>
+                    <a href="DesktopComputer">Máy tính để bàn</a>
+                </li>
+                <li>
+                    Điện thoại
+                </li>
+                <li>
+                    Phụ kiện
+                </li>
+            </ul>
+        </div>
+        <div id="div-right">
+            @RenderBody()
+        </div>
+    </div>
+    <div id="div-footer">
+        Footer
+    </div>
 </body>
 </html>

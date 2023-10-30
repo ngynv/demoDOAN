@@ -30,6 +30,7 @@
           <Property Name="NameCus" Type="nvarchar(max)" />
           <Property Name="PhoneCus" Type="nvarchar" MaxLength="15" />
           <Property Name="EmailCus" Type="nvarchar(max)" />
+          <Property Name="PassCus" Type="nchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="OrderDetail">
           <Key>
@@ -164,6 +165,7 @@
           <Property Name="NameCus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="PhoneCus" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="EmailCus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PassCus" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="OrderProes" Relationship="Self.FK__OrderPro__IDCus__403A8C7D" FromRole="Customer" ToRole="OrderPro" />
         </EntityType>
         <EntityType Name="OrderDetail">
@@ -250,7 +252,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DSSPhamEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DSSPhamEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AdminUsers" EntityType="Self.AdminUser" />
           <EntitySet Name="Categories" EntityType="Self.Category" />
           <EntitySet Name="Customers" EntityType="Self.Customer" />
@@ -279,7 +281,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DSSPhamModelStoreContainer" CdmEntityContainer="DSSPhamEntities1">
+        <EntityContainerMapping StorageEntityContainer="DSSPhamModelStoreContainer" CdmEntityContainer="DSSPhamEntities2">
           <EntitySetMapping Name="AdminUsers">
             <EntityTypeMapping TypeName="DSSPhamModel.AdminUser">
               <MappingFragment StoreEntitySet="AdminUser">
@@ -306,6 +308,7 @@
                 <ScalarProperty Name="NameCus" ColumnName="NameCus" />
                 <ScalarProperty Name="PhoneCus" ColumnName="PhoneCus" />
                 <ScalarProperty Name="EmailCus" ColumnName="EmailCus" />
+                <ScalarProperty Name="PassCus" ColumnName="PassCus" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

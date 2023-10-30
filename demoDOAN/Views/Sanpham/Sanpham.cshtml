@@ -9,6 +9,35 @@
 }
 
 <div class="container listProduct">
+    <div style="border: 3px solid #ff6a00; height: 70px; text-align: center; padding: 15px;">
+
+        <!-- Đoạn thêm -->
+
+        @using (Html.BeginForm("Sanpham", "Sanpham", FormMethod.Get))
+
+        {
+
+            <table>
+
+                <tr>
+
+                    <td>
+
+                        Tên Sản phẩm : <input type="text" name="SearchString" />
+
+                        <input type="submit" value="Tìm kiếm" class="btn btn-warning" />
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+        }
+
+        <!--Kết thúc -->
+
+    </div>
     <div class=" row">
         @foreach (var item in Model)
         {

@@ -8,14 +8,14 @@
 
 <div class="container trangchu">
     <div class="vdHome">
-        <video playsinline autoplay muted loop object-cover style="width: 100%; height: 50%; position:center; object-fit:contain;">
+        <video playsinline autoplay muted loop object-cover style="width: 100%; height: auto; position:center; object-fit:contain;background-size:cover">
             <source src="~/video/vdHome.mp4" type="video/mp4">
         </video>
     </div>
     <div class="favouries">
         <p class="text-thuognhieu">Yêu thích của chúng tôi</p>
-        <div class="container row" style="margin: auto;">
-            <div class="col-lg-4 item-trangchu">
+        <div class=" row" style="margin: auto;">
+            <div class="col-md-4 item-trangchu">
                 <div class="item-top">
                     <img src="~/image/trangchu/trangchu2.jpg" class="item-top_img" />
                 </div>
@@ -25,7 +25,7 @@
                     <p class="item-bot_text-sub">Giải pháp tối đa cho làn da mụn.</p>
                 </div>
             </div>
-            <div class="col-lg-4 item-trangchu">
+            <div class="col-md-4 item-trangchu">
                 <div class="item-top">
                     <img src="~/image/trangchu/trangchu1.jpg" class="item-top_img"/>
                 </div>
@@ -34,7 +34,7 @@
                     <p class="item-bot_text-sub">Nuôi dưỡng tối ưu cho làm da khô khó của bạn, được cung cấp bởi Vitamin C làm sáng da.</p>
                 </div>
             </div>
-            <div class="col-lg-4 item-trangchu">
+            <div class="col-md-4 item-trangchu">
                 <div class="item-top">
                     <img src="~/image/trangchu/trangchu3.jpg" class="item-top_img" />
                 </div>
@@ -48,18 +48,62 @@
         
 
     </div>
-    <h2 class="text-thuognhieu"> Sản phẩm An Lành - Con người Chân Thật</h2>
-     <div class="orginContent">
-        <div class="orginContent-item" style="background-color:#66883f">
-            <p class="imgOrgin" style="height: 250px; width: 200px">
-                <img src="~/image/orgin1.png" alt="Lá Bạc Hà" />
+    <h2 class="text-thuognhieu container"> Sản phẩm An Lành - Con người Chân Thật</h2>
+    <div class="orginContent row">
+        <div class="orginContent-item col-md-6 col-lg-3 col-sm-6" style="background-color: #66883f">
+            <div class="orginContent-item_top">
+                <img src="~/image/orgin1.png" class="orginContent-item_top-img"/>
+            </div>
+            <div class="orginContent-item_bot">
+                <p class="orginContent-item_bot-main">Lá bạc hà</p>
+                <p class="orginContent-item_bot-dec">Lá bạc hà được sử dụng trong các sản phẩm mỹ phẩm như: cao dược liệu để gội đầu, lá tắm cho trẻ em, súc miệng,..</p>
+            </div>
+
+        </div>
+        <div class="orginContent-item col-md-6 col-lg-3 col-sm-6" style="background-color: #c57200">
+            <div class="orginContent-item_bot">
+                <p class="orginContent-item_bot-main">Tinh dầu cam</p>
+                <p class="orginContent-item_bot-dec">
+                    Tinh dầu cam ngọt được sử dụng trong mỹ phẩm như một thành phần làm thơm, giải tỏa căng thẳng: sáp thơm, tinh dầu thơm....
+                </p>
+            </div>
+            <div class="orginContent-item_top">
+                <img src="~/image/orgin2.png" class="orginContent-item_top-img"/>
+            </div>
+        </div>
+        <div class="orginContent-item col-md-6 col-lg-3 col-sm-6" style="background-color: #66883f">
+            <div class="orginContent-item_top">
+                <img src="~/image/orgin3.png" class="orginContent-item_top-img"/>
+            </div>
+            <div class="orginContent-item_bot">
+                <p class="orginContent-item_bot-main">Dầu quả bơ</p>
+                <p class="orginContent-item_bot-dec">
+                    Được chiết từ thịt quả bơ chín ngay sau khi thu hoạch bằng phương pháp ép lạnh, phương pháp này giữ được nguyên dinh dưỡng tốt trong dầu.
+                </p>
+            </div>
+        </div>
+        <div class="orginContent-item col-md-6 col-lg-3 col-sm-6" style="background-color: #b69a71">
+            <div class="orginContent-item_bot">
+                <p class="orginContent-item_bot-main">Dầu dừa</p>
+                <p class="orginContent-item_bot-dec">
+                    Dầu dừa được chiết xuất từ phần cùi trắng của quả dừa, có thể được tìm thấy trong nhiều loại mỹ phẩm và chăm sóc cá nhân.
+                </p>
+            </div>
+            <div class="orginContent-item_top">
+                <img src="~/image/orgin4.png" class="orginContent-item_top-img"/>
+            </div>
+        </div>
+     </div>
+        @*<div class="orginContent-item col-lg-3" style="background-color:#66883f">
+            <p class="imgOrgin">
+                <img src="~/image/orgin1.png" alt="Lá Bạc Hà" style="transform: scale(0.7)" />
             </p>
             <h3 class="title"> lá bạc hà</h3>
             <p class="description">
                 Lá bạc hà được sử dụng trong các sản phẩm mỹ phẩm như: cao dược liệu để gội đầu, lá tắm cho trẻ em, súc miệng,..
             </p>
         </div>
-        <div class="orginContent-item" style="background-color:#c57200">
+        <div class="orginContent-item col-lg-3 " style="background-color:#c57200">
             <h3 class="title">Tinh dầu cam</h3>
             <p class="description">
                 Tinh dầu cam ngọt được sử dụng trong mỹ phẩm như một thành phần làm thơm, giải tỏa căng thẳng: sáp thơm, tinh dầu thơm....
@@ -68,7 +112,7 @@
                 <img src="~/image/orgin2.png" alt="Tinh dầu cam ngọt" />
             </div>
         </div>
-        <div class="orginContent-item" style="background-color: #66883f">
+        <div class="orginContent-item col-lg-3 " style="background-color: #66883f">
             <div class="imgOrgin" style="height: 250px; width: 270px;">
                 <img src="~/image/orgin3.png" alt="Dầu quả bơ" />
             </div>
@@ -77,7 +121,7 @@
                 Được chiết từ thịt quả bơ chín ngay sau khi thu hoạch bằng phương pháp ép lạnh, phương pháp này giữ được nguyên dinh dưỡng tốt trong dầu.
             </p>
         </div>
-        <div class="orginContent-item" style="background-color:#b69a71">
+        <div class="orginContent-item col-lg-3 " style="background-color:#b69a71">
             <h3 class="title">Dầu dừa</h3>
             <p class="description">
                 Dầu dừa được chiết xuất từ phần cùi trắng của quả dừa, có thể được tìm thấy trong nhiều loại mỹ phẩm và chăm sóc cá nhân.
@@ -86,7 +130,7 @@
                 <img src="~/image/orgin4.png" alt="Dầu dừa" />
             </div>
 
-        </div>
+        </div>*@
 
     </div>
 

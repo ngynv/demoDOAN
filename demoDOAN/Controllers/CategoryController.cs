@@ -10,7 +10,7 @@ namespace demoDOAN.Controllers
 {
     public class CategoriesController : Controller
     {
-        DSSPhamEntities1 database = new DSSPhamEntities1();
+        DSSPhamEntities2 database = new DSSPhamEntities2();
         // GET: Categories
         
         public ActionResult DanhMuc()
@@ -18,8 +18,19 @@ namespace demoDOAN.Controllers
             var categories = database.Categories.ToList();
             return View(categories);
         }
-        
-       
-        
+
+        [ChildActionOnly]
+        public PartialViewResult CategoryPartial()
+
+        {
+
+            var cateList = database.Categories.ToList();
+
+            return PartialView(cateList);
+
+        }
+
+
+
     }
 }

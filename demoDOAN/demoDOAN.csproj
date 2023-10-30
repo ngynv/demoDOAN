@@ -129,10 +129,12 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\DangnhapController.cs" />
     <Compile Include="Controllers\DathangController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NguoidungController.cs" />
     <Compile Include="Controllers\SanphamController.cs" />
     <Compile Include="Controllers\ThanhtoanController.cs" />
     <Compile Include="Controllers\ThuonghieuController.cs" />
@@ -143,6 +145,7 @@
     <Compile Include="Models\AdminUser.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\Category.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -201,6 +204,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="image\bocongthuong_small.png" />
+    <Content Include="image\cart.png" />
     <Content Include="image\footer-image.jpg" />
     <Content Include="image\orgin1.png" />
     <Content Include="image\orgin2.png" />
@@ -318,11 +322,17 @@
     <Content Include="Views\Sanpham\Sanpham.cshtml" />
     <Content Include="Views\Dangnhap\Index.cshtml" />
     <Content Include="Views\Dangnhap\RegisterUser.cshtml" />
-    <Content Include="Views\Sanpham\Timkiem.cshtml" />
     <Content Include="Views\Categories\DanhMuc.cshtml" />
     <Content Include="Views\Categories\Timkiem.cshtml" />
     <Content Include="Views\Thanhtoan\Thanhtoan.cshtml" />
     <Content Include="Views\Dathang\Dathang.cshtml" />
+    <Content Include="Views\Nguoidung\Register.cshtml" />
+    <Content Include="Views\Nguoidung\Login.cshtml" />
+    <Content Include="Views\Sanpham\ProductList.cshtml" />
+    <Content Include="Views\Cart\GetCartInfo.cshtml" />
+    <Content Include="Views\Cart\CartPartial.cshtml" />
+    <Content Include="Views\Nguoidung\PartialLogin.cshtml" />
+    <Content Include="Views\Categories\CategoryPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

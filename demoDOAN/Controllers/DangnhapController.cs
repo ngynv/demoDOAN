@@ -1,6 +1,7 @@
 ﻿using demoDOAN.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -9,7 +10,7 @@ namespace demoDOAN.Controllers
 {
     public class DangnhapController : Controller
     {
-        DSSPhamEntities1 dbs = new DSSPhamEntities1();
+        DSSPhamEntities2 dbs = new DSSPhamEntities2();
         // GET: Dangnhap
         public ActionResult Index()
         {
@@ -56,5 +57,7 @@ namespace demoDOAN.Controllers
             }
             return View();
         }
+
     }
+
 }

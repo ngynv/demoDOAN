@@ -1,0 +1,68 @@
+﻿@using demoDOAN.Models
+@model List<CartItem>
+
+@{
+    ViewBag.Title = "GetCartInfo";
+    Layout = "~/Views/Shared/_BeautyLayout.cshtml";
+}
+<style>
+    .table1 {
+        border: 2px solid deeppink; /* kẻ viền quanh bảng */
+        table-layout: fixed;
+        width: 300px;
+    }
+
+    .table-auto {
+        table-layout: auto;
+    }
+
+    .table1 td {
+        border: 1px solid #343333; /* kẻ viền các cell */
+    }
+
+    .col50px {
+        width: 150px;
+    }
+</style>
+
+<div style="margin: 100px auto; width: 80%;">
+    <h2 style="text-align: center">THÔNG TIN GIỎ HÀNG</h2>
+    <hr />
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th class="col50px">MÃ SẢN PHẨM</th>
+                <th>TÊN</th>
+                <th>ẢNH</th>
+                <th class="col50px">SỐ LƯỢNG</th>
+                <th class="col50px">ĐƠN GIÁ</th>
+                <th class="col50px">THÀNH TIỀN</th>
+            </tr>
+        </thead>
+        <tbody style="text-align: center">
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td>@product.ProductID</td>
+                    <td>@product.NamePro</td>
+                    <td>
+                        <img src="~/image/Sanpham/@product.ImagePro"
+                             height="150" width="150" />
+                    </td>
+                    <td>@product.Number</td>
+                    <td>@product.Price</td>
+                    <td>@product.FinalPrice()</td>
+                </tr>
+            }
+            <tr style="font-weight:bold; text-align:right;color:red;">
+                <td colspan="5">
+                    Tổng số lượng:
+                    @ViewBag.TotalNumber
+                </td>
+                <td colspan="1">Tổng tiền: @ViewBag.TotalPrice</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+

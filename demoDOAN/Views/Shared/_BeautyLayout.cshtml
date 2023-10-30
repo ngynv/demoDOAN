@@ -1,7 +1,7 @@
-﻿<!DOCTYPE html>
+﻿<!DOCTYPE html >
 
 <html>
-<head>
+<head >
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -11,7 +11,7 @@
     <link href="~/Content/StyleSheet.css" rel="stylesheet" />
     <link href="~/Content/Resposive.css" rel="stylesheet" />
 </head>
-<body>
+<body style="background-color: #fbfbfb" class="app">
     <div class="container">
         <div class="header header-pc">
             <div class="navbar-left">
@@ -20,7 +20,7 @@
                         @Html.ActionLink("Trang chủ", "Trangchu", "Trangchu", new { area = "" }, new { @class = "text-none" })
                     </li>
                     <li class="navbar-left_item">
-                        @Html.ActionLink("Sản phẩm", "Sanpham", "Sanpham", new { area = "" }, new { @class = "text-none" })
+                        @Html.ActionLink("Sản phẩm", "ProductList", "Sanpham", new { area = "" }, new { @class = "text-none" })
                     </li>
                     <li class="navbar-left_item">
                         @Html.ActionLink("Thương hiệu", "Thuonghieu", "Thuonghieu", new { area = "" }, new { @class = "text-none" })
@@ -28,119 +28,142 @@
                 </ul>
             </div>
             <div class="navbar-center">
-                <img src="~/image/logo-top.png" />
+                <a href="http://localhost:64657/Trangchu/Trangchu"> <img src="~/image/logo-top.png" /></a>
+               
             </div>
             <div class="navbar-right">
                 <ul class="navbar-right_items">
-                    <li class="navbar-right_item"><i class="fa-solid fa-magnifying-glass"></i></li>
                     <li class="navbar-right_item">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                             @Html.ActionLink("Giỏ hàng", "Thanhtoan", "Thanhtoan", new { area = "" }, new { @class = "text-none" })
+                      <a href="@Url.Action("Login","Nguoidung")" style="color: #6f6f6f">
+                          <i class="fa-solid fa-user"></i>
+                      </a>
+                    </li>
+                    <li class="navbar-right_item">
+                        @*<a href="~/Views/Cart/GetCartInfo.cshtml"><i class="fa-solid fa-cart-shopping"></i></a>*@
+                            <a>
+                                @Html.Action("CartPartial","Cart")
+                            </a>
                     </li>
                 </ul>
             </div>
         </div>
         <div class="header header-mobile">
             <div class="header-mobile_left">
-                <label for="header-mobile-input" class="header-mobile_left-icon">
+                <label for="header-input" class="header-mobile_left-icon">
                     <i class="fa-solid fa-bars"></i>
                 </label>
-                <ul class="header-mobile_left-list">
-                    <li class="header-mobile_left-item">
-                        @Html.ActionLink("Trang chủ", "Trangchu", "Trangchu", new { area = "" }, new { @class = "text-none" })
-                    </li>
-                    <li class="header-mobile_left-item">
-                        @Html.ActionLink("Sản phẩm", "Sanpham", "Sanpham", new { area = "" }, new { @class = "text-none" })
-                    </li>
-                    <li class="header-mobile_left-item">
-                        @Html.ActionLink("Thương hiệu", "Thuonghieu", "Thuonghieu", new { area = "" }, new { @class = "text-none" })
-                    </li>
-                    <li class="header-mobile_left-item">
-                        @Html.ActionLink("Đăng ký", "Dangky", "Dangky", new { area = "" }, new { @class = "text-none" })
-                    </li>
-                </ul>
+                <input type="checkbox" hidden  name="" class="header-mobile-input" id="header-input"/>
+                <label for="header-input" class="header_overlay"></label>
+                <div class="header-mobile-list">
+                    <ul class="header-mobile_left-list">
+                        <label for="header-input" class="header-mobile-close">
+                            <i class="fa-solid fa-xmark header-mobile-close_icon"></i>
+                        </label>
+                        <li class="header-mobile_left-item">
+                            @Html.ActionLink("Trang chủ", "Trangchu", "Trangchu", new { area = "" }, new { @class = "text-none" })
+                        </li>
+                        <li class="header-mobile_left-item">
+                            @Html.ActionLink("Sản phẩm", "ProductList", "Sanpham", new { area = "" }, new { @class = "text-none" })
+                        </li>
+                        <li class="header-mobile_left-item">
+                            @Html.ActionLink("Thương hiệu", "Thuonghieu", "Thuonghieu", new { area = "" }, new { @class = "text-none" })
+                        </li>
+                        <li class="header-mobile_left-item">
+                            @Html.ActionLink("Đăng nhập", "Login", "Nguoidung", new { area = "" }, new { @class = "text-none" })
+                        </li>
+                    </ul>
+                </div>
             </div>
             <div class="header-mobile_center">  <img src="~/image/logo-top.png" class="header-mobile_center-img" /></div>
                 <ul class="header-mobile_right-list">
                     <li class="header-mobile_right-item">
-                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <a href="@Url.Action("Login","Nguoidung")" style="color: #6f6f6f">
+                            <i class="fa-solid fa-user"></i>
+                        </a>
                     </li>
                     <li class="header-mobile_right-item">
-                        <i class="fa-solid fa-cart-shopping"></i>
+                        @*<a href="~/Views/Cart/GetCartInfo.cshtml"><i class="fa-solid fa-cart-shopping"></i></a>*@
+                        <a>
+                            
+                            @Html.Action("CartPartial", "Cart")
+                        </a>
                     </li>
                 </ul>
             </div>
         </div>
-    <div style="">
+    <div style="overflow: hidden">
         @RenderBody()
     </div>
 
-        <footer class="footer container">
-            <div class="footer-left">
-                <img src="~/image/footer-image.jpg" class="footer-left_img" />
-            </div>
-            <div class="footer-right">
-                <div class="footer-right_top">
-                    <div class="footer-right_content col">
-                        <p class="item-box_text">Đặt hàng & Hỗ trợ</p>
-                        <p class="footer-text_sub">Hỏi đáp</p>
-                        <p class="footer-text_sub">Hướng dẫn mua hàng</p>
-                        <p class="footer-text_sub">Chính sách bán hàng</p>
-                        <p class="footer-text_sub">Điều khoản bảo mật</p>
-                        <p class="footer-text_sub">Liên hệ chúng tôi</p>
-                    </div>
-                    <div class="footer-right_content col">
-                        <p class="item-box_text">Về Melixier</p>
-                        <p class="footer-text_sub">Sản phẩm</p>
-                        <p class="footer-text_sub">Chăm sóc da</p>
-                        <p class="footer-text_sub">Dưỡng môi</p>
-                        <p class="footer-text_sub">Combo / Bộ sản phẩm</p>
-                    </div>
-                    <div class="footer-right_content col">
-                        <p class="item-box_text">Mạng xã hội</p>
-                        <div class="footer-text_contact">
-                            <p class="">Facebook</p>
-                            <i class="fa-solid fa-arrow-right icon"></i>
-                        </div>
-                        <div class="footer-text_contact">
-                            <p class="">Instagram</p>
-                            <i class="fa-solid fa-arrow-right icon"></i>
-                        </div>
-                        <div class="footer-text_contact">
-                            <p class="">TikTok</p>
-                            <i class="fa-solid fa-arrow-right icon"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="footer-right_bottom">
-                    <div class="footer-right_bottom-70">
-                        <p class="footer-text">melixir - CHẤT LƯỢNG THẬT - GIÁ TRỊ THẬT</p>
-                        <p class="footer-text_sub">
-                            melixir là hệ thống cửa hàng mỹ phẩm chính hãng và dịch vụ chăm sóc sắc đẹp chuyên sâu với hệ thống cửa hàng
-                            trải dài trên toàn quốc với hàng loạt thương hiệu thuần chay.
-                        </p>
-                        <p class="footer-text_sub">
-                            Với phương châm "Chất lượng thật - Giá trị thật”, melixir luôn nỗ lực không ngừng nhằm nâng cao chất
-                            lượng sản phẩm & dịch vụ để khách hàng có được những trải nghiệm mua sắm tốt nhất. Toàn bộ sản phẩm có ở
-                            melixir đều được cam kết 100% chính hãng, đảm bảo nguồn gốc xuất xứ. Ngoài ra, melixir và
-                            nhãn hàng cam kết bảo vệ hai lớp với mức đền bù 200% nếu phát hiện hàng giả, trong đó 100% từ melixir và
-                            100% từ nhà phân phối.
-                        </p>
-                    </div>
-                    <div class="footer-right_bottom-30">
-                        <p class="footer-text">Đã chứng nhận</p>
-                        <img src="~/image/bocongthuong_small.png" />
-                        <p class="footer-text">Bản quyền &copy; 2016 melixir</p>
-                        <p class="footer-text_sub">Công Ty cổ phần melixir </p>
-                        <p class="footer-text_sub">
-                            Giấy chứng nhận Đăng ký Kinh doanh số 0313612829 do Sở Kế hoạch
-                            và Đầu tư Thành phố Hồ Chí Minh cấp ngày 13/01/2016
-                        </p>
-                    </div>
-                </div>
-            </div>
 
-        </footer>
+<footer class="footer" style="background-color: #f5f5f5">
+
+    <div class="footer-left">
+        <img src="~/image/footer-image.jpg" class="footer-left_img" />
+    </div>
+    <div class="footer-right">
+        <div class="footer-right_top">
+            <div class="footer-right_content col">
+                <p class="item-box_text">Đặt hàng & Hỗ trợ</p>
+                <p class="footer-text_sub">Hỏi đáp</p>
+                <p class="footer-text_sub">Hướng dẫn mua hàng</p>
+                <p class="footer-text_sub">Chính sách bán hàng</p>
+                <p class="footer-text_sub">Điều khoản bảo mật</p>
+                <p class="footer-text_sub">Liên hệ chúng tôi</p>
+            </div>
+            <div class="footer-right_content col">
+                @{ Html.RenderAction("CategoryPartial", "Categories");}
+                <p class="item-box_text">Về Melixier</p>
+                <p class="footer-text_sub">Sản phẩm</p>
+                <p class="footer-text_sub">Chăm sóc da</p>
+                <p class="footer-text_sub">Dưỡng môi</p>
+                <p class="footer-text_sub">Combo / Bộ sản phẩm</p>
+            </div>
+            <div class="footer-right_content col">
+                <p class="item-box_text">Mạng xã hội</p>
+                <div class="footer-text_contact">
+                    <p class="">Facebook</p>
+                    <i class="fa-solid fa-arrow-right icon"></i>
+                </div>
+                <div class="footer-text_contact">
+                    <p class="">Instagram</p>
+                    <i class="fa-solid fa-arrow-right icon"></i>
+                </div>
+                <div class="footer-text_contact">
+                    <p class="">TikTok</p>
+                    <i class="fa-solid fa-arrow-right icon"></i>
+                </div>
+            </div>
+        </div>
+        <div class="footer-right_bottom">
+            <div class="footer-right_bottom-70">
+                <p class="footer-text">melixir - CHẤT LƯỢNG THẬT - GIÁ TRỊ THẬT</p>
+                <p class="footer-text_sub1">
+                    melixir là hệ thống cửa hàng mỹ phẩm chính hãng và dịch vụ chăm sóc sắc đẹp chuyên sâu với hệ thống cửa hàng
+                    trải dài trên toàn quốc với hàng loạt thương hiệu thuần chay.
+                </p>
+                <p class="footer-text_sub1">
+                    Với phương châm "Chất lượng thật - Giá trị thật”, melixir luôn nỗ lực không ngừng nhằm nâng cao chất
+                    lượng sản phẩm & dịch vụ để khách hàng có được những trải nghiệm mua sắm tốt nhất. Toàn bộ sản phẩm có ở
+                    melixir đều được cam kết 100% chính hãng, đảm bảo nguồn gốc xuất xứ. Ngoài ra, melixir và
+                    nhãn hàng cam kết bảo vệ hai lớp với mức đền bù 200% nếu phát hiện hàng giả, trong đó 100% từ melixir và
+                    100% từ nhà phân phối.
+                </p>
+            </div>
+            <div class="footer-right_bottom-30">
+                <p class="footer-text">Đã chứng nhận</p>
+                <img src="~/image/bocongthuong_small.png" />
+                <p class="footer-text">Bản quyền &copy; 2016 <strong> melixir</strong></p>
+                <p class="footer-text_sub1">Công Ty cổ phần <strong>melixir</strong> Việt Nam</p>
+                <p class="footer-text_sub1">
+                    Giấy chứng nhận Đăng ký Kinh doanh số 0313612829 do Sở Kế hoạch
+                    và Đầu tư Thành phố Hồ Chí Minh cấp ngày 13/01/2016
+                </p>
+            </div>
+        </div>
+    </div>
+
+</footer>
 
 
 </body>
