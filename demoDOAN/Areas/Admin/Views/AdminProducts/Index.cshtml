@@ -1,0 +1,208 @@
+﻿@model IEnumerable<demoDOAN.Models.Product>
+
+@{
+    Layout = null;
+
+    var format = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+    var user = Session["Account"] as demoDOAN.Models.AdminUser;
+    <link href="~/Content/StyleSheet.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+
+</head>
+
+
+
+<body class="">
+    <div class="container">
+
+        <div class="header header-pc" style="background-color: #e6e3de; padding: 3px 0">
+            <div class="container" style="display: flex">
+                <div class="navbar-left">
+
+                </div>
+                <div class="navbar-center">
+                    <a href="http://localhost:64657/Trangchu/Trangchu"> <img src="~/image/logo-top.png" /></a>
+
+                </div>
+                <div class="navbar-right">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="main row" style="padding-bottom: 100px">
+            <div class="col-2 main-left">
+                @if (user != null)
+                {
+                    //Customer cust = Session["TaiKhoan"] as Customer;
+                    <div class="detailsUser-leftItem" style="">
+                        <i class="fas fa-user" style="font-size: 20px; color: #6f6f6f;"></i>
+                        <p class="text-none1" style="font-size: 14px; padding-left: 5px"> <a href="@Url.Action("Details","AdminUsers",new { id = user.ID})" class="text-none" style="text-decoration: none; /* font-size: 12px; */ color: #6f6f6f; font-weight: 700; padding-left: 5px; font-size: 17px">@user.NameUser</a></p>
+                    </div>
+                    <hr style="margin-right: 40px" />
+                    <div class="" style="margin-bottom: 10px"><a style="color: #6f6f6f; text-decoration: none;" href="http://localhost:64657/Admin/AdminUsers/Index">Quản lý admin</a></div>
+                    <div class="" style="margin-bottom: 10px"><a style="color: #6f6f6f; text-decoration: none;" href="http://localhost:64657/Admin/AdminCustomers/Index">Quản lý người dùng</a></div>
+                    <div class="" style="margin-bottom: 20px"><a style="color: #6f6f6f; text-decoration: none;" href="http://localhost:64657/Admin/OrderDetails/Index">Quản lý đơn hàng</a></div>
+                    <div><a href="/Customers/Logout" class="text-none btn-primarys" style=" padding: 5px 15px; text-decoration: none; border-radius: 5px; font-size: 17px ">Đăng xuất</a></div>
+                }
+            </div>
+            <div class="col-10">
+
+                <a href="@Url.Action("Create","AdminProducts")" class="text-none btn btns btn-primarys" style="margin-bottom: 15px">TẠO MỚI SẢN PHẨM</a>
+                
+                <table class="table" style="font-size: 14px">
+                    <tr>
+                        <th style="max-width: 190px">
+                            Tên sản phẩm
+                        </th>
+                        <th style="max-width: 300px">
+                           Mô tả
+                        </th>
+                        <th style="max-width: 100px">
+                          Giá tiền
+                        </th>
+                        <th style="max-width: 150px">
+                          Hình ảnh 
+                        </th>
+                        <th>
+                           Danh mục 
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td  style="max-width: 190px">
+                                @Html.DisplayFor(modelItem => item.NamePro)
+                            </td>
+                            <td style="max-width: 300px">
+                                @Html.DisplayFor(modelItem => item.DecriptionPro)
+                            </td>
+                            <td style="max-width: 100px">
+                                @*@Html.DisplayFor(modelItem => item.Price)*@
+                                @String.Format(format, "{0:c00}", @item.Price)
+                            </td>
+                            <td style="max-width: 150px"    >
+                                <img src="~/image/Sanpham/@item.ImagePro" style="width: 100%"/>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Category.NameCate)
+                            </td>
+                            <td>
+                                <a href=" @Url.Action("Edit", "AdminProducts",  new { id = item.ProductID })" class="btn btn-primarys">
+                                   Chỉnh sửa
+                                </a>
+                                <a href=" @Url.Action("Details", "AdminProducts",  new { id = item.ProductID })" class="btn btn-primarys">
+                                    Chi tiết
+                                </a>
+                                <a href=" @Url.Action("Delete", "AdminProducts",  new { id = item.ProductID })" class="btn btn-primarys">
+                                    Xóa
+                                </a>
+
+                            </td>
+                            
+                        </tr>
+                    }
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+    <footer class="" style="background-color: #e6e3de; padding: 50px 0"></footer>
+</body>
+</html>
+<style>
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-color: #e6e3de;
+    }
+
+    .main {
+        margin-top: 100px;
+    }
+
+    .main-left {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .btn-primarys {
+        background-color: #6f6f6f;
+        color: #fff !important;
+        text-decoration: none;
+        background-color: #6f6f6f;
+    }
+
+      
+    .btn-primarys a{
+        background-color: #6f6f6f;
+        color: #fff !important;
+        text-decoration: none;
+    }
+
+
+    a .btn:hover {
+        background-color: #6f6f6f !important;
+        color: #fff !important;
+        text-decoration: none;
+        background-color: #6f6f6f;
+    }
+
+    .detailsUser {
+        margin-top: 120px;
+        margin-bottom: 70px;
+        padding-left: 20px;
+        display: flex;
+        font-family: Arial;
+    }
+
+    .detailsUser-item {
+        display: flex;
+    }
+
+    .detailsUser-itemMain {
+        padding-right: 20px;
+    }
+
+    .text-none1 a {
+        text-decoration: none;
+        color: #6f6f6f;
+    }
+
+    .textMian {
+        color: #333;
+        font-weight: 700;
+    }
+
+    .detailsUser-right {
+        padding: 20px 60px 20px 60px;
+        background: #fff;
+        box-shadow: 0 1px 2px 0 rgba(0,0,0,.13);
+        border-radius: 0.125rem;
+        flex: 1;
+    }
+
+    .detailsUser-leftItem {
+        display: flex;
+    }
+
+    .detailsUser-leftItem1 {
+    }
+</style>

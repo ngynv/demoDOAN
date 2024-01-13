@@ -1,0 +1,92 @@
+﻿@model demoDOAN.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_BeautyLayout.cshtml";
+    <link href="~/Content/StyleSheet.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    var format = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+
+}
+<style>
+    .details-item {
+        padding: 10px 15px 0;
+    }
+
+    .details-top {
+        transform: scale(0.99);
+    }
+
+    .details-bot {
+        transform: scale(0.99);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    a {
+        text-decoration: none;
+        color: #fff;
+    }
+</style>
+<div class="container" style="margin: 100px auto;">
+    <h2 style="text-align: center">CHI TIẾT SẢN PHẨM</h2>
+    <div>
+        <hr />
+        <dl class="dl-horizontal details-item row">
+            <div class="details-top col-sm-4">
+                <dd style="background-color: #fff; margin-right: 35px; box-shadow: rgba(149, 157, 165, 0.2) 0px 1px 10px ">
+                    <img src="~/image/Sanpham/@Model.ImagePro" width="90%" />
+                </dd>
+            </div>
+            <div class="details-bot col-sm-8">
+                <div class="details-bot_itemTop">
+                    <dt style="color: #6f6f6f"> TÊN SẢN PHẨM:</dt>
+                    <dd style=" font-weight: 500; font-size: 20px;">
+                        @Html.DisplayFor(model => model.NamePro)
+                    </dd>
+                    <dt style="color: #6f6f6f">MÔ TẢ:</dtstyle="color:>
+                    <dd style="max-width: 750px;font-weight: 500; font-size: 20px;">
+                        @Html.DisplayFor(model => model.DecriptionPro)
+                    </dd>
+                    <dt style="color: #6f6f6f">GIÁ:</dt>
+                    <dd style="color: red; font-weight: 500; font-size: 20px;">
+                        @String.Format(format, "{0:c00}", Model.Price)
+                    </dd>
+                    <dd style="margin-top: 20px; margin-bottom: 15px; display: flex; justify-content: space-between">
+                        <p>
+                        @Html.ActionLink("Thêm vào giỏ", "AddToCart", "Cart", new { id = Model.ProductID }, new { @class = "btn btn-primarys" })
+                        </p>
+                        <p class="nuttt" style="display: inline; margin-left: 5px ;padding: 8px 15px !important; background-color: #6f6f6f !important; color: #fff !important; text-decoration: none; border: 1px solid; border-radius: 5px;">
+                            @Html.ActionLink("Quay Về", "ProductList", new { @class = "btn btn-primarys" })
+                        </p>
+                    </dd>
+                </div>
+
+                @*<div class="details-bot_itemTop" style="margin-bottom: 20px; display:flex; align-items: center">
+                    <p class="details-bot_itemBot">
+                    <p />
+                    <p class="nuttt" style="display: inline; margin-left: 5px ;padding: 8px 15px !important; background-color: #6f6f6f !important; color: #fff !important; text-decoration: none; border: 1px solid; border-radius: 5px;">
+                        @Html.ActionLink("Quay Về", "ProductList", new { @class = "btn btn-primarys" })
+                    </p>
+                </div>*@
+
+            </div>
+        </dl>
+    </div>
+</div>
+
+<style>
+    .btn-primarys {
+        background-color: #6f6f6f;
+        color: #fff;
+        padding: 7px 14px;
+    }
+
+        .btn-primarys:hover {
+            background-color: #6f6f6f;
+            color: #fff!important;
+            cursor: pointer;
+        }
+    
+</style>   

@@ -129,14 +129,19 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminCustomersController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminProductsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminUsersController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OrderDetailsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OrderProesController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
-    <Compile Include="Controllers\DangnhapController.cs" />
-    <Compile Include="Controllers\DathangController.cs" />
+    <Compile Include="Controllers\CreateController.cs" />
+    <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\NguoidungController.cs" />
+    <Compile Include="Controllers\ListController.cs" />
     <Compile Include="Controllers\SanphamController.cs" />
-    <Compile Include="Controllers\ThanhtoanController.cs" />
     <Compile Include="Controllers\ThuonghieuController.cs" />
     <Compile Include="Controllers\TrangchuController.cs" />
     <Compile Include="Global.asax.cs">
@@ -196,6 +201,7 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\image.css" />
+    <Content Include="Content\JavaScript.js" />
     <Content Include="Content\Resposive.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\StyleIndex.css" />
@@ -206,6 +212,7 @@
     <Content Include="image\bocongthuong_small.png" />
     <Content Include="image\cart.png" />
     <Content Include="image\footer-image.jpg" />
+    <Content Include="image\Login\background-login.jpg" />
     <Content Include="image\orgin1.png" />
     <Content Include="image\orgin2.png" />
     <Content Include="image\orgin3.png" />
@@ -225,6 +232,7 @@
     <Content Include="image\Sanpham\Lotion.jpg" />
     <Content Include="image\Sanpham\matnadua.jpg" />
     <Content Include="image\Sanpham\matnadua1.jpg" />
+    <Content Include="image\Sanpham\melixir-kemduong.jpg" />
     <Content Include="image\Sanpham\ntt.jpg" />
     <Content Include="image\Sanpham\nuoctaytrang.jpg" />
     <Content Include="image\Sanpham\son.jpg" />
@@ -288,6 +296,32 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\AdminProducts\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminProducts\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminProducts\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminProducts\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminProducts\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminUsers\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminUsers\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminUsers\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminUsers\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminUsers\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminCustomers\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminCustomers\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminCustomers\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminCustomers\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminCustomers\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\OrderDetails\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\OrderDetails\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\OrderDetails\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\OrderDetails\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\OrderDetails\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\OrderProes\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\OrderProes\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\OrderProes\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\OrderProes\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\OrderProes\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -319,23 +353,25 @@
     <Content Include="Views\Shared\_BeautyLayout.cshtml" />
     <Content Include="Views\Thuonghieu\Thuonghieu.cshtml" />
     <Content Include="Views\Trangchu\Trangchu.cshtml" />
-    <Content Include="Views\Sanpham\Sanpham.cshtml" />
-    <Content Include="Views\Dangnhap\Index.cshtml" />
-    <Content Include="Views\Dangnhap\RegisterUser.cshtml" />
-    <Content Include="Views\Categories\DanhMuc.cshtml" />
-    <Content Include="Views\Categories\Timkiem.cshtml" />
-    <Content Include="Views\Thanhtoan\Thanhtoan.cshtml" />
-    <Content Include="Views\Dathang\Dathang.cshtml" />
-    <Content Include="Views\Nguoidung\Register.cshtml" />
-    <Content Include="Views\Nguoidung\Login.cshtml" />
+    <Content Include="Views\Category\Timkiem.cshtml" />
     <Content Include="Views\Sanpham\ProductList.cshtml" />
     <Content Include="Views\Cart\GetCartInfo.cshtml" />
     <Content Include="Views\Cart\CartPartial.cshtml" />
-    <Content Include="Views\Nguoidung\PartialLogin.cshtml" />
-    <Content Include="Views\Categories\CategoryPartial.cshtml" />
+    <Content Include="Views\Shared\PartialLogin.cshtml" />
+    <Content Include="Views\Category\CategoryPartial.cshtml" />
+    <Content Include="Views\Sanpham\Details.cshtml" />
+    <Content Include="Views\Customers\Details.cshtml" />
+    <Content Include="Views\Customers\Edit.cshtml" />
+    <Content Include="Views\Customers\Login.cshtml" />
+    <Content Include="Views\Customers\Register.cshtml" />
+    <Content Include="Views\Cart\CheckOut_Success.cshtml" />
+    <Content Include="Views\List\Index.cshtml" />
+    <Content Include="Views\Create\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

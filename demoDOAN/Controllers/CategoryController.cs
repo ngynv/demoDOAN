@@ -8,16 +8,11 @@ using demoDOAN.Models;
 
 namespace demoDOAN.Controllers
 {
-    public class CategoriesController : Controller
+    public class CategoryController : Controller
     {
-        DSSPhamEntities2 database = new DSSPhamEntities2();
+        ProductsEntities database = new ProductsEntities();
         // GET: Categories
         
-        public ActionResult DanhMuc()
-        {
-            var categories = database.Categories.ToList();
-            return View(categories);
-        }
 
         [ChildActionOnly]
         public PartialViewResult CategoryPartial()

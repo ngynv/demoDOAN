@@ -1,0 +1,103 @@
+﻿@model demoDOAN.Models.OrderPro
+@using demoDOAN.Models
+@{
+    ViewBag.Title = "CheckOut_Success";
+    Layout = "~/Views/Shared/_BeautyLayout.cshtml";
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    var format = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+    
+}
+
+<div class="detailsUser-right container checkout" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 1px 10px;">
+    <h4 style="color: #333; font-weight: 500; text-transform: uppercase">Thông tin HÓA ĐƠN</h4>
+    <hr />
+    <dl class="dl-horizontal" style="color: #6f6f6f">
+        <div style="">
+            <div Class="detailsUser-item">
+                <dt class="detailsUser-itemMain textBlack">Ngày đặt hàng: </dt>
+                <dd style="margin-left: 20px">
+                    @Html.DisplayFor(model => model.DateOrder, "{0:dd/MM/yyyy HH:mm}")
+                </dd>
+            </div>
+            <div Class="detailsUser-item">
+                <dt class="detailsUser-itemMain textBlack">Địa chỉ đơn hàng: </dt>
+                <dd style="margin-left: 20px">
+                    @Html.DisplayFor(model => model.AddressDeliverry)
+                </ddstyle="margin-left:>
+            </div>
+            <div Class="detailsUser-item">
+                <dt class="detailsUser-itemMain textBlack">Tên khách hàng: </dt>
+                <dd style="margin-left: 20px">
+                    @Html.DisplayFor(model => model.Customer.NameCus)
+                </dd>
+            </div>
+            <div Class="detailsUser-item">
+                <dt class="detailsUser-itemMain textBlack">Số điện thoại: </dt>
+                <dd style="margin-left: 20px">
+                    @Html.DisplayFor(model => model.Customer.PhoneCus)
+                </dd>
+            </div>
+
+        </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th style="text-align:center">TÊN</th>
+                    <th style="text-align:center">ẢNH</th>
+                    <th class="col50px" style="text-align:center">SỐ LƯỢNG</th>
+                    <th class="col50px" style="text-align:center">ĐƠN GIÁ</th>
+                    <th class="col50px" style="text-align:center">THÀNH TIỀN</th>
+                </tr>
+            </thead>
+            <tbody style="text-align: center">
+                @foreach (var product in Model.OrderDetails)
+                {
+                    <tr>
+                        <td>@product.Product.NamePro</td>
+                        <td>
+                            <img src="~/image/Sanpham/@product.Product.ImagePro"
+                                 height="150" width="150" />
+                        </td>
+                        <td>@product.Quantity</td>
+                        <td>  @String.Format(format, "{0:c00}", @product.UnitPrice)</td>
+                        <td>  @String.Format(format, "{0:c00}", @product.Quantity * (decimal)product.UnitPrice)</td>
+                    </tr>
+
+                }
+
+                
+                <tr style="font-weight:bold; text-align:right;color:red;">
+                    <td colspan="3">
+                        Tổng số lượng: @Model.Quantity
+                    </td>
+                    <td colspan="4">Tổng tiền:  @String.Format(format, "{0:c00}", Model.Totalprice)</td>
+                </tr>
+
+
+                </tr>
+
+
+            </tbody>
+        </table>
+
+
+
+    </dl>
+</div>
+
+<style>
+    .checkout {
+        margin-top: 100px;
+        margin-bottom: 50px;
+        background-color: #fff;
+        padding: 50px;
+    }
+
+    .detailsUser-item {
+        display: flex
+    }
+
+    .textBlack {
+        color: #333;
+    }
+</style>

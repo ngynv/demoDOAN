@@ -1,0 +1,126 @@
+﻿@model demoDOAN.Models.Product
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <style>
+        .btn-primarys {
+            background-color: #6f6f6f;
+            color: #fff;
+        }
+
+            .btn-primarys:hover {
+                color: #f5f5f5;
+                background-color: #6f6f6f;
+                cursor: pointer;
+            }
+
+        .form1 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .btn-primarys {
+            background-color: #6f6f6f;
+            color: #fff;
+        }
+
+            .btn-primarys:hover {
+                color: #f5f5f5;
+                background-color: #6f6f6f;
+                cursor: pointer;
+            }
+    </style>
+
+    <div class="header header-pc" style="background-color: #e6e3de; padding: 3px 0">
+        <div class="container" style="display: flex; justify-content: center">
+            <div class="navbar-left">
+
+            </div>
+            <div class="navbar-center">
+                <a href="http://localhost:64657/Trangchu/Trangchu"> <img src="~/image/logo-top.png" /></a>
+
+            </div>
+            <div class="navbar-right">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container" style="margin-top: 50px; margin-bottom: 220px">
+        <h4 style="text-align: center;">CHI TIẾT SẢN PHẨM</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <div class="form1">
+                <dt>
+                    Tên sản phẩm:
+                </dt>
+                <dd class="form-control" style="width: 85%; padding: 8px 15px; cursor: no-drop; min-height: 41.6px">
+                    @Html.DisplayFor(model => model.NamePro)
+                </dd>
+            </div>
+            <div class="form1">
+                <dt>
+                    Chi tiết sản phẩm:
+                </dt>
+                <dd class="form-control" style="width: 85%; padding: 8px 15px; cursor: no-drop; min-height: 41.6px">
+                    @Html.DisplayFor(model => model.DecriptionPro)
+                </dd>
+            </div>
+            <div class="form1">
+                <dt>
+                    Giá tiền:
+                </dt>
+                <dd class="form-control" style="width: 85%; padding: 8px 15px; cursor: no-drop; min-height: 41.6px">
+                    @Html.DisplayFor(model => model.Price)
+                </dd>
+            </div>
+            <div class="form1">
+                <dt>
+                    Hình ảnh mô tả:
+                </dt>
+                <dd class="form-control" style="width: 85%; padding: 8px 15px; cursor: no-drop; min-height: 41.6px">
+                    @Html.DisplayFor(model => model.ImagePro)
+                </dd>
+            </div>
+            <div class="form1">
+                <dt>
+                    Danh mục sản phẩm:
+                </dt>
+                <dd class="form-control" style="width: 85%; padding: 8px 15px; cursor: no-drop; min-height: 41.6px">
+                    @Html.DisplayFor(model => model.Category.NameCate)
+                </dd>
+            </div>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-group" style="display: flex; margin-top: 30px;">
+                <div class="col-md-offset-2 col-md-6" style="display: flex;justify-content: flex-start">
+                    <a href=" @Url.Action("Index", "AdminProducts", new { id = Model.ProductID })" class="btn btn-primarys">
+                        Quay lại
+                    </a>
+                </div>
+                <div class="col-md-offset-2 col-md-6" style="display: flex;justify-content: flex-end">
+                    <input type="submit" value="Xóa" class="btn btn-primarys" />
+                </div>
+            </div>
+        }
+    </div>
+
+    <footer class="" style="background-color: #e6e3de; padding: 50px 0"></footer>
+</body>
+</html>

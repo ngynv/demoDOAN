@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html >
 
-<html>
-<head >
+<html data-bs-theme="">
+<head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -10,10 +10,11 @@
     <meta name="theme-color" content="#ffffff">
     <link href="~/Content/StyleSheet.css" rel="stylesheet" />
     <link href="~/Content/Resposive.css" rel="stylesheet" />
+
 </head>
 <body style="background-color: #fbfbfb" class="app">
-    <div class="container">
-        <div class="header header-pc">
+    <div class="header header-pc" style=" padding: 3px 0">
+        <div class="container" style="display: flex">
             <div class="navbar-left">
                 <ul class="navbar-left_items">
                     <li class="navbar-left_item">
@@ -25,34 +26,47 @@
                     <li class="navbar-left_item">
                         @Html.ActionLink("Thương hiệu", "Thuonghieu", "Thuonghieu", new { area = "" }, new { @class = "text-none" })
                     </li>
+                    <li class="navbar-left_item">
+                        @Html.ActionLink("Về Melixir", "Index", "List", new { area = "" }, new { @class = "text-none" })
+                    </li>
+                   
                 </ul>
             </div>
             <div class="navbar-center">
                 <a href="http://localhost:64657/Trangchu/Trangchu"> <img src="~/image/logo-top.png" /></a>
-               
+
             </div>
             <div class="navbar-right">
                 <ul class="navbar-right_items">
                     <li class="navbar-right_item">
-                      <a href="@Url.Action("Login","Nguoidung")" style="color: #6f6f6f">
-                          <i class="fa-solid fa-user"></i>
-                      </a>
+                        @*<a href="@Url.Action("GetCartInfo","Cart")"><i class="fa-solid fa-cart-shopping"></i></a>*@
+                        <a>
+                            @Html.Action("CartPartial", "Cart")
+
+                        </a>
                     </li>
-                    <li class="navbar-right_item">
-                        @*<a href="~/Views/Cart/GetCartInfo.cshtml"><i class="fa-solid fa-cart-shopping"></i></a>*@
-                            <a>
-                                @Html.Action("CartPartial","Cart")
-                            </a>
+                    <li class="navbar-right_item navbar-right-dropDown" style=" padding-left: 20px; padding-right: 0">
+                        <a href="@Url.Action("Login","Customers")" style="color: #6f6f6f;">
+                            <i class="fa-solid fa-user"></i>
+                        </a>
+                    </li>
+                    <li class="navbar-right-dropDown_item">
+                        @Html.Partial("PartialLogin")
+
                     </li>
                 </ul>
+
             </div>
+
         </div>
+    </div>
+    <!--<div class="container">
         <div class="header header-mobile">
             <div class="header-mobile_left">
                 <label for="header-input" class="header-mobile_left-icon">
                     <i class="fa-solid fa-bars"></i>
                 </label>
-                <input type="checkbox" hidden  name="" class="header-mobile-input" id="header-input"/>
+                <input type="checkbox" hidden name="" class="header-mobile-input" id="header-input" />
                 <label for="header-input" class="header_overlay"></label>
                 <div class="header-mobile-list">
                     <ul class="header-mobile_left-list">
@@ -74,97 +88,221 @@
                     </ul>
                 </div>
             </div>
-            <div class="header-mobile_center">  <img src="~/image/logo-top.png" class="header-mobile_center-img" /></div>
-                <ul class="header-mobile_right-list">
-                    <li class="header-mobile_right-item">
-                        <a href="@Url.Action("Login","Nguoidung")" style="color: #6f6f6f">
-                            <i class="fa-solid fa-user"></i>
-                        </a>
-                    </li>
-                    <li class="header-mobile_right-item">
-                        @*<a href="~/Views/Cart/GetCartInfo.cshtml"><i class="fa-solid fa-cart-shopping"></i></a>*@
-                        <a>
-                            
-                            @Html.Action("CartPartial", "Cart")
-                        </a>
-                    </li>
-                </ul>
+            <div class="header-mobile_center">
+                <a href="http://localhost:64657/Trangchu/Trangchu" style="display: flex; justify-content: center">
+                    <img src="~/image/logo-top.png" class="header-mobile_center-img" />
+                </a>
             </div>
+            <ul class="header-mobile_right-list">
+                <li class="header-mobile_right-item">
+                    <a href="@Url.Action("Login","Nguoidung")" style="color: #6f6f6f">
+                        <i class="fa-solid fa-user"></i>
+                    </a>
+                </li>
+                <li class="header-mobile_right-item">-->
+    @*<a href="~/Views/Cart/GetCartInfo.cshtml"><i class="fa-solid fa-cart-shopping"></i></a>*@
+    <!--<a>
+
+                        @Html.Action("CartPartial", "Cart")
+
+
+                    </a>
+                </li>
+            </ul>
         </div>
+    </div>-->
+
+
+    @*<div class="theme-switch-wrapper">
+        <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider round"></div>
+        </label>
+    </div>*@
+
+
     <div style="overflow: hidden">
         @RenderBody()
     </div>
 
+    <footer class="footer" style="background-color: #f5f5f5">
 
-<footer class="footer" style="background-color: #f5f5f5">
-
-    <div class="footer-left">
-        <img src="~/image/footer-image.jpg" class="footer-left_img" />
-    </div>
-    <div class="footer-right">
-        <div class="footer-right_top">
-            <div class="footer-right_content col">
-                <p class="item-box_text">Đặt hàng & Hỗ trợ</p>
-                <p class="footer-text_sub">Hỏi đáp</p>
-                <p class="footer-text_sub">Hướng dẫn mua hàng</p>
-                <p class="footer-text_sub">Chính sách bán hàng</p>
-                <p class="footer-text_sub">Điều khoản bảo mật</p>
-                <p class="footer-text_sub">Liên hệ chúng tôi</p>
-            </div>
-            <div class="footer-right_content col">
-                @{ Html.RenderAction("CategoryPartial", "Categories");}
-                <p class="item-box_text">Về Melixier</p>
-                <p class="footer-text_sub">Sản phẩm</p>
-                <p class="footer-text_sub">Chăm sóc da</p>
-                <p class="footer-text_sub">Dưỡng môi</p>
-                <p class="footer-text_sub">Combo / Bộ sản phẩm</p>
-            </div>
-            <div class="footer-right_content col">
-                <p class="item-box_text">Mạng xã hội</p>
-                <div class="footer-text_contact">
-                    <p class="">Facebook</p>
-                    <i class="fa-solid fa-arrow-right icon"></i>
+        <div class="footer-left">
+            <img src="~/image/footer-image.jpg" class="footer-left_img" />
+        </div>
+        <div class="footer-right">
+            <div class="footer-right_top" style="margin: 40px 0 20px">
+                <div class="footer-right_content col">
+                    <p class="item-box_text">Đặt hàng & Hỗ trợ</p>
+                    <p class="footer-text_sub">Hỏi đáp</p>
+                    <p class="footer-text_sub">Hướng dẫn mua hàng</p>
+                    <p class="footer-text_sub">Chính sách bán hàng</p>
+                    <p class="footer-text_sub">Điều khoản bảo mật</p>
+                    <p class="footer-text_sub">Liên hệ chúng tôi</p>
                 </div>
-                <div class="footer-text_contact">
-                    <p class="">Instagram</p>
-                    <i class="fa-solid fa-arrow-right icon"></i>
+                <div class="footer-right_content col" style="text-align: center;">
+                    <p class="item-box_text">Về Melixier</p>
+                    @{ Html.RenderAction("CategoryPartial", "Category");}
                 </div>
-                <div class="footer-text_contact">
-                    <p class="">TikTok</p>
-                    <i class="fa-solid fa-arrow-right icon"></i>
+                <div class="footer-right_content col">
+                    <p class="item-box_text">Mạng xã hội</p>
+                    <div class="footer-text_contact">
+                        <p class=""><a href="https://www.facebook.com/elyzabellanchi" style="color: #6f6f6f; text-decoration: none">Facebook</a></p>
+                        <i class="fa-solid fa-arrow-right icons"></i>
+                    </div>
+                    <div class="footer-text_contact">
+                        <p class=""><a href="https://www.instagram.com/ngynv_/" style="color: #6f6f6f; text-decoration: none">Instagram</a></p>
+                        <i class="fa-solid fa-arrow-right icons"></i>
+                    </div>
+                    <div class="footer-text_contact">
+                        <p class=""<a href="https://www.tiktok.com/thnha.nana" style="color: #6f6f6f; text-decoration: none; margin-right: 28px">TikTok</a></p>
+                        <i class="fa-solid fa-arrow-right icons"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-right_bottom">
+                <div class="footer-right_bottom-70">
+                    <p class="footer-text" style="font-size: 18px">melixir - CHẤT LƯỢNG THẬT - GIÁ TRỊ THẬT</p>
+                    <p class="footer-text_sub1" style="font-size: 15px">
+                        melixir là hệ thống cửa hàng mỹ phẩm chính hãng và dịch vụ chăm sóc sắc đẹp chuyên sâu với hệ thống cửa hàng
+                        trải dài trên toàn quốc với hàng loạt thương hiệu thuần chay.
+                    </p>
+                    <p class="footer-text_sub1" style="font-size: 15px">
+                        Với phương châm "Chất lượng thật - Giá trị thật”, melixir luôn nỗ lực không ngừng nhằm nâng cao chất
+                        lượng sản phẩm & dịch vụ để khách hàng có được những trải nghiệm mua sắm tốt nhất. Toàn bộ sản phẩm có ở
+                        melixir đều được cam kết 100% chính hãng, đảm bảo nguồn gốc xuất xứ. Ngoài ra, melixir và
+                        nhãn hàng cam kết bảo vệ hai lớp với mức đền bù 200% nếu phát hiện hàng giả, trong đó 100% từ melixir và
+                        100% từ nhà phân phối.
+                    </p>
+                </div>
+                <div class="footer-right_bottom-30">
+                    <p class="footer-text" style="font-size: 18px">Đã chứng nhận</p>
+                    <img src="~/image/bocongthuong_small.png" />
+                    <p class="footer-text">Bản quyền &copy; 2016 <strong> melixir</strong></p>
+                    <p class="footer-text_sub1" style="font-size: 15px">Công Ty cổ phần <strong>melixir</strong> Việt Nam</p>
+                    <p class="footer-text_sub1" style="font-size: 15px">
+                        Giấy chứng nhận Đăng ký Kinh doanh số 0313612829 do Sở Kế hoạch
+                        và Đầu tư Thành phố Hồ Chí Minh cấp ngày 13/01/2016
+                    </p>
                 </div>
             </div>
         </div>
-        <div class="footer-right_bottom">
-            <div class="footer-right_bottom-70">
-                <p class="footer-text">melixir - CHẤT LƯỢNG THẬT - GIÁ TRỊ THẬT</p>
-                <p class="footer-text_sub1">
-                    melixir là hệ thống cửa hàng mỹ phẩm chính hãng và dịch vụ chăm sóc sắc đẹp chuyên sâu với hệ thống cửa hàng
-                    trải dài trên toàn quốc với hàng loạt thương hiệu thuần chay.
-                </p>
-                <p class="footer-text_sub1">
-                    Với phương châm "Chất lượng thật - Giá trị thật”, melixir luôn nỗ lực không ngừng nhằm nâng cao chất
-                    lượng sản phẩm & dịch vụ để khách hàng có được những trải nghiệm mua sắm tốt nhất. Toàn bộ sản phẩm có ở
-                    melixir đều được cam kết 100% chính hãng, đảm bảo nguồn gốc xuất xứ. Ngoài ra, melixir và
-                    nhãn hàng cam kết bảo vệ hai lớp với mức đền bù 200% nếu phát hiện hàng giả, trong đó 100% từ melixir và
-                    100% từ nhà phân phối.
-                </p>
-            </div>
-            <div class="footer-right_bottom-30">
-                <p class="footer-text">Đã chứng nhận</p>
-                <img src="~/image/bocongthuong_small.png" />
-                <p class="footer-text">Bản quyền &copy; 2016 <strong> melixir</strong></p>
-                <p class="footer-text_sub1">Công Ty cổ phần <strong>melixir</strong> Việt Nam</p>
-                <p class="footer-text_sub1">
-                    Giấy chứng nhận Đăng ký Kinh doanh số 0313612829 do Sở Kế hoạch
-                    và Đầu tư Thành phố Hồ Chí Minh cấp ngày 13/01/2016
-                </p>
-            </div>
-        </div>
-    </div>
 
-</footer>
+    </footer>
 
 
+    <style>
+        .wrapper {
+            background-color: var(--white);
+        }
+
+        .content {
+            background-color: var(--gray);
+        }
+
+        .title {
+            color: var(--black);
+        }
+
+            .title + p {
+                color: var(--black);
+                ...
+            }
+
+        :root {
+            --white: white;
+            --black: black;
+            --gray: #fafafa;
+        }
+
+        [data-theme="dark"] {
+            --white: black;
+            --black: white;
+            --gray: black;
+        }
+
+        .theme-switch-wrapper {
+            display: flex;
+            align-items: center;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+        }
+
+        .theme-switch {
+            display: inline-block;
+            height: 34px;
+            position: relative;
+            width: 60px;
+        }
+
+            .theme-switch input {
+                display: none;
+            }
+
+        .slider {
+            background-color: #999;
+            bottom: 0;
+            cursor: pointer;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            transition: .4s;
+        }
+
+            .slider:before {
+                background-color: white;
+                bottom: 4px;
+                content: "";
+                height: 26px;
+                left: 4px;
+                position: absolute;
+                transition: .4s;
+                width: 26px;
+            }
+
+        input:checked + .slider {
+            background-color: #eee;
+        }
+
+            input:checked + .slider:before {
+                transform: translateX(26px);
+            }
+
+        .slider.round {
+            border-radius: 34px;
+        }
+
+            .slider.round:before {
+                border-radius: 50%;
+            }
+        .icons:hover {
+            transform: translateX(30px);
+            transition: 0.4s linear;
+        }
+    </style>
+    <script>
+
+
+
+        ////const body = document.body;
+        ////const switch_mode = document.querySelector('#switch-mode i');
+        ////// Load mode
+        ////let mode = localStorage.getItem('darkmode');
+        ////if (mode === 'true') {
+        ////    body.classList.add('dark');
+        ////    switch_mode.className = "bi bi-brightness-high-fill";
+        ////}
+
+        ////switch_mode.addEventListener('click', () => {
+        ////    switch_mode.classList.toggle('bi-moon-stars-fill');
+        ////    switch_mode.classList.toggle('bi-brightness-high-fill');
+        ////    let mode = body.classList.toggle('dark');
+        ////    // save mode
+        ////    localStorage.setItem('darkmode', mode);
+        ////});
+    </script>
 </body>
 </html>

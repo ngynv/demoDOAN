@@ -3,66 +3,337 @@
 
 @{
     ViewBag.Title = "GetCartInfo";
-    Layout = "~/Views/Shared/_BeautyLayout.cshtml";
+    Layout = "";
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    var format = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+    var user = Session["Account"] as demoDOAN.Models.Customer;
 }
-<style>
-    .table1 {
-        border: 2px solid deeppink; /* kẻ viền quanh bảng */
-        table-layout: fixed;
-        width: 300px;
-    }
 
-    .table-auto {
-        table-layout: auto;
-    }
-
-    .table1 td {
-        border: 1px solid #343333; /* kẻ viền các cell */
-    }
-
-    .col50px {
-        width: 150px;
-    }
-</style>
-
-<div style="margin: 100px auto; width: 80%;">
-    <h2 style="text-align: center">THÔNG TIN GIỎ HÀNG</h2>
-    <hr />
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th class="col50px">MÃ SẢN PHẨM</th>
-                <th>TÊN</th>
-                <th>ẢNH</th>
-                <th class="col50px">SỐ LƯỢNG</th>
-                <th class="col50px">ĐƠN GIÁ</th>
-                <th class="col50px">THÀNH TIỀN</th>
-            </tr>
-        </thead>
-        <tbody style="text-align: center">
-            @foreach (var product in Model)
-            {
-                <tr>
-                    <td>@product.ProductID</td>
-                    <td>@product.NamePro</td>
-                    <td>
-                        <img src="~/image/Sanpham/@product.ImagePro"
-                             height="150" width="150" />
-                    </td>
-                    <td>@product.Number</td>
-                    <td>@product.Price</td>
-                    <td>@product.FinalPrice()</td>
-                </tr>
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Create</title>
+        <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    </head>
+    <body>
+        <style>
+            body {
+                margin: 0;
+                background-color: #fbfbfb;
             }
-            <tr style="font-weight:bold; text-align:right;color:red;">
-                <td colspan="5">
-                    Tổng số lượng:
-                    @ViewBag.TotalNumber
-                </td>
-                <td colspan="1">Tổng tiền: @ViewBag.TotalPrice</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+
+            .table1 {
+                border: 2px solid deeppink; /* kẻ viền quanh bảng */
+                table-layout: fixed;
+                width: 300px;
+            }
+
+            .table-auto {
+                table-layout: auto;
+            }
+
+            .table1 td {
+                border: 1px solid #343333; /* kẻ viền các cell */
+            }
+
+            .col50px {
+                width: 150px;
+            }
+
+
+            .btn-primaryss {
+                background-color: #6f6f6f !important;
+                color: #fff !important;
+            }
+
+            a.btn-primarys {
+                background-color: #6f6f6f;
+                color: #fff;
+            }
+
+            .btn-primarys:hover {
+                color: #f5f5f5;
+                background-color: #6f6f6f;
+                cursor: pointer;
+            }
+
+            .btn-primaryss:hover {
+                background-color: #6f6f6f !important;
+                color: #fff !important;
+            }
+
+            .btn-primarys:hover {
+                color: #fff !important;
+                background-color: #6f6f6f;
+                cursor: pointer;
+            }
+
+            .header-Thanhtoan {
+                display: flex;
+                background-color: #e6e3de;
+                padding: 3.4px 0;
+                justify-content: space-between
+            }
+
+            .header-rightLeft {
+                display: flex;
+                align-items: center;
+                font-size: 20px;
+                font-weight: 500;
+                padding: 0 31px;
+                border-left: 1px solid #6f6f6f;
+                color: #6f6f6f;
+            }
+
+            .header-Thanhtoan-LEFT {
+                display: inline-flex;
+            }
+
+            .formAddress {
+                margin-top: 30px;
+                padding: 20px 40px;
+                background-color: #fff;
+            }
+
+            .p {
+                height: 3px;
+                width: 100%;
+                background-size: 116px 3px;
+                background-image: repeating-linear-gradient(45deg,#6fa6d6,#6fa6d6 33px,transparent 0,transparent 41px,#f18d9b 0,#f18d9b 74px,transparent 0,transparent 82px);
+            }
+        </style>
+        <div class="header-Thanhtoan">
+            <div class="container" style="display: flex; justify-content: space-between">
+
+                <div class="header-Thanhtoan-LEFT ">
+                    <div class="header-left">
+                        <a href="http://localhost:64657/Trangchu/Trangchu">
+                            <img src="~/image/logo-top.png" />
+
+                        </a>
+                    </div>
+                    <div class="header-rightLeft " style="text-decoration: none; /* font-size: 12px; */ color: #6f6f6f; font-weight: 500; font-size: 18px;font-family: system-ui; ">Thanh toán</div>
+
+                </div>
+                <div class="header-right" style="display: inline-block;margin-right: 30px">
+                    <ul class="navbar-right_items">
+                        <li class="navbar-right_item">
+                            <a>
+                                @Html.Action("CartPartial", "Cart")
+
+                            </a>
+                        </li>
+                        <li class="navbar-right_item navbar-right-dropDown" style=" padding-left: 20px; padding-right: 0">
+                            <a href="@Url.Action("Login", "Customers")" style="color: #6f6f6f;">
+                                <i class="fa-solid fa-user"></i>
+                            </a>
+                        </li>
+                        <li class="navbar-right-dropDown_item">
+                            @Html.Partial("PartialLogin")
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        @if (Model == null)
+        {
+            <div class="container">
+                <h4 class=" text-center" style="text-transform: uppercase; font-size: 24px; color: #333;margin-top: 45px;">
+                    Giỏ hàng của bạn rỗng!
+                </h4>
+               <hr />
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+                    <a href=" @Url.Action("Trangchu", "Trangchu")" class="btn btn-primarys">
+                        Quay lại
+                    </a>
+
+                    <a href=" @Url.Action("ProductList", "Sanpham")" class="btn btn-primarys">
+                        Tiếp tục mua hàng
+                    </a>
+                </div>
+
+
+            </div>
+
+        }
+        else
+        {
+
+            <h4 style="text-align: center;margin-top: 45px">THÔNG TIN ĐƠN  HÀNG</h4>
+            <div class="container"><hr /></div>
+            <div style="margin: 15px auto; width: 80%;">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="col50px" style="text-align:center">MÃ SẢN PHẨM</th>
+                            <th style="text-align:center">TÊN</th>
+                            <th style="text-align:center">ẢNH</th>
+                            <th class="col50px" style="text-align:center">SỐ LƯỢNG</th>
+                            <th class="col50px" style="text-align:center">ĐƠN GIÁ</th>
+                            <th class="col50px" style="text-align:center">THÀNH TIỀN</th>
+                            <th class="col50px" style="text-align:center">CHỈNH SỬA</th>
+                        </tr>
+                    </thead>
+                    <tbody style="text-align: center">
+                        @foreach (var product in Model)
+
+                        {
+                            <tr>
+                                <td>@product.ProductID</td>
+                                <td>@product.NamePro</td>
+                                <td>
+                                    <img src="~/image/Sanpham/@product.ImagePro"
+                                         height="150" width="150" />
+                                </td>
+                                @using (Html.BeginForm("UpdateCart", "Cart", new { id = product.ProductID }))
+                                {
+                                    <td>
+                                        <form action="@Url.Action("UpdateCart")" method="get">
+                                            <input type="hidden" name="SanPhamID" value="@product.ProductID" />
+                                            <input type="number" min="1" step="1" name="soluongmoi" value="@product.Number" />
+                                            <button type="submit" class="btn btn-primarys btn-sm" style="margin: 10px;color: #fff; background-color: #6f6f6f;"> Cập nhật </button>
+                                        </form>
+                                    </td>
+                                    <td> @product.Price.ToString("#,##0").Replace(',', '.') đ </td>
+                                    <td> @product.FinalPrice().ToString("#,##0").Replace(',', '.') đ </td>
+                                    <td> @Html.ActionLink("Xóa", "Remove", new { id = product.ProductID }, new { @class = "btn btn-primaryss btn-sm" })</td>
+                                }
+
+                            </tr>
+
+                        }
+
+
+                        <tr style="font-weight:bold; text-align:right;color:red;">
+                            <td colspan="4">
+                                Tổng số lượng: @ViewBag.TotalNumber
+                            </td>
+                            <td colspan="4">Tổng tiền:  @String.Format(format, "{0:c00}", @ViewBag.TotalPrice)</td>
+
+
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>
+
+
+                    @using (Html.BeginForm("CheckOut", "Cart"))
+
+                    {
+                        <div class="formAddress " style="padding: 0 40px 20px 40px; margin-top: 40px; box-shadow: rgba(149, 157, 165, 0.2) 0px 1px 10px;border-radius:5px   ">
+                            <div class="p"></div>
+                            <div class="" style="color: #6f6f6f; margin-bottom: 15px; font-size: 20px; margin-top: 20px ">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <p style="margin-left: 5px; display: inline; font-weight:600; font-size: 24px ">
+                                    Địa chỉ nhận hàng
+                                </p>
+                            </div>
+                            <div class="form-group">
+                                <p style="margin:0">Họ và tên:</p>
+                                <div class="col-md-10">
+                                    @user.NameCus
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-top:0; margin-bottom: 20px">
+                                <p style="margin:0">Số Điện Thoại:</p>
+                                <div class="col-md-10">
+                                    @user.PhoneCus
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <p style="margin:0">Địa chỉ giao hàng:</p>
+                                <div class="col-md-10">
+                                    <input type="text" name="AddressDeliverry" class="form-control" required />
+                                </div>
+                            </div>
+
+                            <div style="display: flex; justify-content: space-between; align-items: center; background-color: #fff; padding: 10px 0px 0 0px; font-size: 15px; border-top: 1px solid #6f6f6f">
+                                <p style="margin:0">Nhấn "Đặt hàng" đồng nghĩa với việc bạn đồng ý tuân theo <em style="cursor: pointer;">Điều khoản <strong>melixir</strong></em></p>
+                            </div>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+                            <a href=" @Url.Action("ProductList", "Sanpham")" class="btn btn-primarys">
+                                Tiếp tục mua hàng
+                            </a>
+                        
+                            <input type="submit" value="Đặt hàng" class="btn btn-primaryss" style="" />
+                        </div>
+
+                    }
+
+
+                </p>
+            </div>
+        }
+        <footer class="footer" style="background-color: #f5f5f5; margin-top: 100px;">
+
+            <div class="footer-left">
+                <img src="~/image/footer-image.jpg" class="footer-left_img" />
+            </div>
+            <div class="footer-right">
+                <div class="footer-right_top">
+                    <div class="footer-right_content col">
+                        <p class="item-box_text">Đặt hàng & Hỗ trợ</p>
+                        <p class="footer-text_sub">Hỏi đáp</p>
+                        <p class="footer-text_sub">Hướng dẫn mua hàng</p>
+                        <p class="footer-text_sub">Chính sách bán hàng</p>
+                        <p class="footer-text_sub">Điều khoản bảo mật</p>
+                        <p class="footer-text_sub">Liên hệ chúng tôi</p>
+                    </div>
+                    <div class="footer-right_content col" style="text-align: center;">
+                        <p class="item-box_text">Về Melixier</p>
+                        @{ Html.RenderAction("CategoryPartial", "Category");}
+                    </div>
+                    <div class="footer-right_content col">
+                        <p class="item-box_text">Mạng xã hội</p>
+                        <div class="footer-text_contact">
+                            <p class=""><a href="https://www.facebook.com/elyzabellanchi" style="color: #6f6f6f; text-decoration: none">Facebook</a></p>
+                            <i class="fa-solid fa-arrow-right icon"></i>
+                        </div>
+                        <div class="footer-text_contact">
+                            <p class=""><a href="https://www.instagram.com/ngynv_/" style="color: #6f6f6f; text-decoration: none">Instagram</a></p>
+                            <i class="fa-solid fa-arrow-right icon"></i>
+                        </div>
+                        <div class="footer-text_contact">
+                            <p class=""<a href="https://www.tiktok.com/thnha.nana" style="color: #6f6f6f; text-decoration: none; margin-right: 28px">TikTok</a></p>
+                            <i class="fa-solid fa-arrow-right icon"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-right_bottom">
+                    <div class="footer-right_bottom-70">
+                        <p class="footer-text" style="font-size: 18px">melixir - CHẤT LƯỢNG THẬT - GIÁ TRỊ THẬT</p>
+                        <p class="footer-text_sub1" style="font-size: 15px">
+                            melixir là hệ thống cửa hàng mỹ phẩm chính hãng và dịch vụ chăm sóc sắc đẹp chuyên sâu với hệ thống cửa hàng
+                            trải dài trên toàn quốc với hàng loạt thương hiệu thuần chay.
+                        </p>
+                        <p class="footer-text_sub1" style="font-size: 15px">
+                            Với phương châm "Chất lượng thật - Giá trị thật”, melixir luôn nỗ lực không ngừng nhằm nâng cao chất
+                            lượng sản phẩm & dịch vụ để khách hàng có được những trải nghiệm mua sắm tốt nhất. Toàn bộ sản phẩm có ở
+                            melixir đều được cam kết 100% chính hãng, đảm bảo nguồn gốc xuất xứ. Ngoài ra, melixir và
+                            nhãn hàng cam kết bảo vệ hai lớp với mức đền bù 200% nếu phát hiện hàng giả, trong đó 100% từ melixir và
+                            100% từ nhà phân phối.
+                        </p>
+                    </div>
+                    <div class="footer-right_bottom-30">
+                        <p class="footer-text" style="font-size: 18px">Đã chứng nhận</p>
+                        <img src="~/image/bocongthuong_small.png" />
+                        <p class="footer-text">Bản quyền &copy; 2016 <strong> melixir</strong></p>
+                        <p class="footer-text_sub1" style="font-size: 15px">Công Ty cổ phần <strong>melixir</strong> Việt Nam</p>
+                        <p class="footer-text_sub1" style="font-size: 15px">
+                            Giấy chứng nhận Đăng ký Kinh doanh số 0313612829 do Sở Kế hoạch
+                            và Đầu tư Thành phố Hồ Chí Minh cấp ngày 13/01/2016
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+        </footer>
+
+    </body>
 
 

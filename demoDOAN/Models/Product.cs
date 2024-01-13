@@ -23,11 +23,11 @@ namespace demoDOAN.Models
         public int ProductID { get; set; }
         public string NamePro { get; set; }
         public string DecriptionPro { get; set; }
-        public string Category { get; set; }
+        public Nullable<int> CateID { get; set; }
         public Nullable<decimal> Price { get; set; }
         public string ImagePro { get; set; }
     
-        public virtual Category Category1 { get; set; }
+        public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }

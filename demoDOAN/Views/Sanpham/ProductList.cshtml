@@ -6,6 +6,8 @@
     <link href="~/Content/StyleSheet.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/Resposive.css" rel="stylesheet" />
+    var format = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+
 }
 <div class="row productList ">
     <div class="productListRight">
@@ -17,34 +19,21 @@
             {
                 <div class="formProductList">
                     <div class="formProductList-item">
-                        <input type="text" name="SearchString" placeholder="Tìm kiếm theo tên sản phẩm" style="flex:1" />
-                        <input type="submit" value="Tìm kiếm" class="btn btn-warning" />
+                        <input type="text"value="@ViewBag.Keyword" name="SearchString" class="btn-mobile" placeholder="Tìm kiếm theo tên" style="flex:1 ;border: 1px solid #e6e3de; outline-color: #6f6f6f" />
+                        <input type="submit" value="Tìm kiếm" class=" btn-productList"style="color: #fff; background-color: #6f6f6f; margin-left: 4px"/>
                     </div>
                     <div class="space"></div>
                     <div class="formProductList-itemm">
-                        <p class="textFormProductList">Bộ lọc: &ensp;</p>
-                        <input type="number" name="min" placeholder="Đơn giá từ:" style="max-width: 150px" />
-                        <input type="number" name="max" placeholder="Đến:" style="max-width: 150px" />
-                        <input type="submit" value="Tìm giá" class="btn btn-info" />
+                        <p class="textFormProductList" style="color: #6f6f6f">Bộ lọc: &ensp;</p>
+                        <div class="textFormProductList-item">
+                            <input type="number" name="min" class="btn-mobile"  placeholder="Đơn giá từ:" style="max-width: 150px; border: 1px solid #e6e3de; outline-color: #6f6f6f" />
+                            <input type="number" name="max" class="btn-mobile"  placeholder="Đến:" style="max-width: 150px; border: 1px solid #e6e3de; outline-color: #6f6f6f"/>
+                            <input type="submit" value="Tìm giá" class=" btn-productList"style="color: #fff; background-color: #6f6f6f;"/>
+
+                        </div>
                     </div>
 
                 </div>
-                /*
-                <table>
-                    <tr>
-                        <td>
-                            Tên Sản phẩm : <input type="text" name="SearchString" />
-                            <input type="submit" value="Tìm kiếm" class="btn btn-warning" />
-                        </td>
-                        <td>
-                            Đơn giá từ : <input type="number" name="min" />
-                            Đến : <input type="number" name="max" />
-                            <input type="submit" value="Tìm giá" class="btn btn-info" />
-                        </td>
-                    </tr>
-                </table>
-                */
-
             }
 
             <!--Kết thúc -->
@@ -56,18 +45,19 @@
         <div class=" row">
             @foreach (var item in Model)
             {
-                <div class="col-md-4 col-lg-3 itemProduct">
-                    <div class="itemProduct-top">
-                        <img src="~/image/Sanpham/@item.ImagePro" class="itemProduct-top_img" />
+
+                <div class="col-md-4 col-lg-3 itemProduct" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px">
+                    <div class="itemProduct-top" style="justify-content: center; align-items: center; border-top-left-radius: 10px; border-top-right-radius: 10px">
+                        <a href="@Url.Action("Details", "Sanpham", new { id = item.ProductID })">
+                            <img src="~/image/Sanpham/@item.ImagePro" class="itemProduct-top_img" style="border-top-left-radius: 10px; border-top-right-radius: 10px"/>
+                         </a>
                     </div>
-                    <div class="itemProduct-bot">
-                        <p class="itemProduct-bot_name">@item.NamePro</p>
-                        <p class="itemProduct-bot_dec"> @item.DecriptionPro</p>
+                    <div class="itemProduct-bot" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; background-color: yellow">
+                        <p class="itemProduct-bot_name" style="font-size: 22px">@item.NamePro</p>
+                        <p class="itemProduct-bot_dec" style="font-size: 16px"> @item.DecriptionPro</p>
                         <div class="itemProduct-bot_buy">
-                            <p class="itemProduct-bot_price"> @item.Price <sub><ins>đ</ins></sub></p>
-                            @Html.ActionLink("Thêm", "AddToCart", "Cart", new { id = item.ProductID }, new { @class = "btn btn-primary" })
-
-
+                            <p class="itemProduct-bot_price" style="font-weight: 500; font-size: 24px; color: red">@String.Format(format, "{0:c00}", @item.Price)</p>
+                            @Html.ActionLink("Thêm", "AddToCart", "Cart", new { id = item.ProductID }, new { @class = "btn btn-primarys" })
                         </div>
                     </div>
                 </div>
@@ -79,4 +69,18 @@
 </div>
 
 
-                         
+                   
+<style>
+    .itemProduct:hover {
+        background-color: #6f6f6f;
+    }
+    .btn-primarys {
+        background-color: #6f6f6f;
+        color: #fff;
+    }
+        .btn-primarys:hover {
+            color: #f5f5f5;
+            background-color: #6f6f6f;
+            cursor: pointer;
+        }
+</style>      

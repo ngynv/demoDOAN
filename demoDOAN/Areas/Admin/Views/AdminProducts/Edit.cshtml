@@ -1,0 +1,120 @@
+﻿@model demoDOAN.Models.Product
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <style>
+        .btn-primarys {
+            background-color: #6f6f6f;
+            color: #fff;
+        }
+
+            .btn-primarys:hover {
+                color: #f5f5f5;
+                background-color: #6f6f6f;
+                cursor: pointer;
+            }
+
+        .form-group {
+            margin: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+
+    <div class="header header-pc" style="background-color: #e6e3de; padding: 3px 0">
+        <div class="container" style="display: flex; justify-content: center">
+            <div class="navbar-left">
+
+            </div>
+            <div class="navbar-center">
+                <a href="http://localhost:64657/Trangchu/Trangchu"> <img src="~/image/logo-top.png" /></a>
+
+            </div>
+            <div class="navbar-right">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container" style="margin-top: 50px; margin-bottom: 220px">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4 style="text-align: center; font-size: 30px">CHỈNH SỬA SẢN PHẨM</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.ProductID)
+
+                <div class="form-group">
+                    Tên sản phẩm:
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.NamePro, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.NamePro, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    Mô tả:
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.DecriptionPro, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.DecriptionPro, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    Danh mục sản phẩm:
+                    <div class="col-md-10">
+                        @Html.DropDownList("CateID", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.CateID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    Giá tiền:
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    Chọn hình ảnh:
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ImagePro, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ImagePro, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group" style="display: flex; margin-top: 30px;">
+                    <div class="col-md-offset-2 col-md-6">
+                        <a href=" @Url.Action("Index", "AdminProducts")" class="btn btn-primarys">
+                            Quay lại
+                        </a>
+                    </div>
+                    <div class="col-md-offset-2 col-md-6" style="margin-top: 30px; display: flex; justify-content: flex-end">
+                        <input type="submit" value="Lưu" class="btn btn-primarys" />
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+
+    <footer class="" style="background-color: #e6e3de; padding: 50px 0"></footer>
+</body>
+</html>

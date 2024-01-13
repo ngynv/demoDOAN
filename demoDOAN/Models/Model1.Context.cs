@@ -13,10 +13,10 @@ namespace demoDOAN.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DSSPhamEntities2 : DbContext
+    public partial class ProductsEntities : DbContext
     {
-        public DSSPhamEntities2()
-            : base("name=DSSPhamEntities2")
+        public ProductsEntities()
+            : base("name=ProductsEntities")
         {
         }
     

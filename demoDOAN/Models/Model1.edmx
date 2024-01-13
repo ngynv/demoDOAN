@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DSSPhamModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ProductsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AdminUser">
           <Key>
             <PropertyRef Name="ID" />
@@ -18,8 +18,7 @@
           <Key>
             <PropertyRef Name="IDCate" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IDCate" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="IDCate" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NameCate" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Customer">
@@ -50,6 +49,8 @@
           <Property Name="DateOrder" Type="date" />
           <Property Name="IDCus" Type="int" />
           <Property Name="AddressDeliverry" Type="nvarchar(max)" />
+          <Property Name="Totalprice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Quantity" Type="int" />
         </EntityType>
         <EntityType Name="Products">
           <Key>
@@ -58,7 +59,7 @@
           <Property Name="ProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NamePro" Type="nvarchar(max)" />
           <Property Name="DecriptionPro" Type="nvarchar(max)" />
-          <Property Name="Category" Type="nchar" MaxLength="20" />
+          <Property Name="CateID" Type="int" />
           <Property Name="Price" Type="decimal" Precision="18" Scale="2" />
           <Property Name="ImagePro" Type="nvarchar(max)" />
         </EntityType>
@@ -106,11 +107,11 @@
               <PropertyRef Name="IDCate" />
             </Principal>
             <Dependent Role="Products">
-              <PropertyRef Name="Category" />
+              <PropertyRef Name="CateID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DSSPhamModelStoreContainer">
+        <EntityContainer Name="ProductsModelStoreContainer">
           <EntitySet Name="AdminUser" EntityType="Self.AdminUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
@@ -134,11 +135,10 @@
             <End Role="Products" EntitySet="Products" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="DSSPhamModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="ProductsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="AdminUser">
           <Key>
             <PropertyRef Name="ID" />
@@ -152,8 +152,7 @@
           <Key>
             <PropertyRef Name="IDCate" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IDCate" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="IDCate" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NameCate" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Products" Relationship="Self.FK_Pro_Category" FromRole="Category" ToRole="Products" />
         </EntityType>
@@ -190,6 +189,8 @@
           <Property Name="AddressDeliverry" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Customer" Relationship="Self.FK__OrderPro__IDCus__403A8C7D" FromRole="OrderPro" ToRole="Customer" />
           <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__IDOrd__440B1D61" FromRole="OrderPro" ToRole="OrderDetail" />
+          <Property Name="Totalprice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Quantity" Type="Int32" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -198,10 +199,10 @@
           <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NamePro" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="DecriptionPro" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Category" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="CateID" Type="Int32" />
           <Property Name="Price" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="ImagePro" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Category1" Relationship="Self.FK_Pro_Category" FromRole="Products" ToRole="Category" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_Pro_Category" FromRole="Products" ToRole="Category" />
           <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__IDPro__4316F928" FromRole="Products" ToRole="OrderDetail" />
         </EntityType>
         <Association Name="FK_Pro_Category">
@@ -212,7 +213,7 @@
               <PropertyRef Name="IDCate" />
             </Principal>
             <Dependent Role="Products">
-              <PropertyRef Name="Category" />
+              <PropertyRef Name="CateID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -252,7 +253,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DSSPhamEntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="ProductsEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AdminUsers" EntityType="Self.AdminUser" />
           <EntitySet Name="Categories" EntityType="Self.Category" />
           <EntitySet Name="Customers" EntityType="Self.Customer" />
@@ -281,9 +282,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DSSPhamModelStoreContainer" CdmEntityContainer="DSSPhamEntities2">
+        <EntityContainerMapping StorageEntityContainer="ProductsModelStoreContainer" CdmEntityContainer="ProductsEntities">
           <EntitySetMapping Name="AdminUsers">
-            <EntityTypeMapping TypeName="DSSPhamModel.AdminUser">
+            <EntityTypeMapping TypeName="ProductsModel.AdminUser">
               <MappingFragment StoreEntitySet="AdminUser">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="NameUser" ColumnName="NameUser" />
@@ -293,16 +294,15 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Categories">
-            <EntityTypeMapping TypeName="DSSPhamModel.Category">
+            <EntityTypeMapping TypeName="ProductsModel.Category">
               <MappingFragment StoreEntitySet="Category">
-                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="IDCate" ColumnName="IDCate" />
                 <ScalarProperty Name="NameCate" ColumnName="NameCate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Customers">
-            <EntityTypeMapping TypeName="DSSPhamModel.Customer">
+            <EntityTypeMapping TypeName="ProductsModel.Customer">
               <MappingFragment StoreEntitySet="Customer">
                 <ScalarProperty Name="IDCus" ColumnName="IDCus" />
                 <ScalarProperty Name="NameCus" ColumnName="NameCus" />
@@ -313,7 +313,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OrderDetails">
-            <EntityTypeMapping TypeName="DSSPhamModel.OrderDetail">
+            <EntityTypeMapping TypeName="ProductsModel.OrderDetail">
               <MappingFragment StoreEntitySet="OrderDetail">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="IDProduct" ColumnName="IDProduct" />
@@ -324,8 +324,10 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OrderProes">
-            <EntityTypeMapping TypeName="DSSPhamModel.OrderPro">
+            <EntityTypeMapping TypeName="ProductsModel.OrderPro">
               <MappingFragment StoreEntitySet="OrderPro">
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Totalprice" ColumnName="Totalprice" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="DateOrder" ColumnName="DateOrder" />
                 <ScalarProperty Name="IDCus" ColumnName="IDCus" />
@@ -334,12 +336,12 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Products">
-            <EntityTypeMapping TypeName="DSSPhamModel.Product">
+            <EntityTypeMapping TypeName="ProductsModel.Product">
               <MappingFragment StoreEntitySet="Products">
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
                 <ScalarProperty Name="NamePro" ColumnName="NamePro" />
                 <ScalarProperty Name="DecriptionPro" ColumnName="DecriptionPro" />
-                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="CateID" ColumnName="CateID" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="ImagePro" ColumnName="ImagePro" />
               </MappingFragment>

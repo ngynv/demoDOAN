@@ -1,0 +1,51 @@
+﻿@model demoDOAN.Models.Customer
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_BeautyLayout.cshtml";
+    <link href="~/Content/StyleSheet.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/Resposive.css" rel="stylesheet" />
+}
+<div class="login" style="margin-bottom:-300px">
+
+    @using (Html.BeginForm("Login", "Customers"))
+    {
+        @Html.ValidationSummary(true)
+        <div class="login-form">
+            <h2 class="form-login-text1">Đăng Nhập</h2>
+            <div class="login-form-name" style="text-align:center">
+                <label for="name" class="form-label" style=""></label>
+                <input placeholder="Tên Đăng Nhập" type="text" class="form-control" id="name" name="NameCus" required>
+            </div>
+            <div class="login-form-pass" style="text-align:center">
+                <label for="pwd" class="form-label"></label>
+                <input placeholder="Nhập Mật Khẩu" type="password" class="form-control" id="pwd" name="PassCus" required>
+            </div>
+            <div class="login-form-log">
+                <p class="form-login-text">
+                    Bạn chưa có Tài Khoản? &ensp;
+                    <a href="@Url.Action("Register","Customers")" class="text-hightlight">Đăng ký</a>
+                </p>
+                <div class="form-inner" style="padding-right:0">
+                    <button type="submit" class="btn btn-primarys btn-mobile">Đăng Nhập</button>
+                </div>
+
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+    .btn-primarys {
+        background-color: #6f6f6f;
+        color: #fff;
+    }
+
+        .btn-primarys:hover {
+            color: #f5f5f5;
+            background-color: #6f6f6f;
+            cursor: pointer;
+        }
+</style>
+
+
